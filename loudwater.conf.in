@@ -1,0 +1,24 @@
+<Directory @libexecdir@>
+  Options FollowSymlinks
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule !\/{1} @libexecdir@/loudwater/remap.pl
+</Directory>
+<Directory @libexecdir@/loudwater>
+  Options ExecCGI FollowSymlinks
+  AllowOverride All
+  Order allow,deny
+  Allow from all
+  <Files *.pl>
+    SetHandler cgi-script
+  </Files>
+  <Files *.mp3>
+    SetHandler cgi-script
+  </Files>
+  <Files *.flv>
+    SetHandler cgi-script
+  </Files>
+  <Files *.xml>
+    SetHandler cgi-script
+  </Files>
+</Directory>

@@ -1,0 +1,10 @@
+#!/usr/bin/perl -w
+
+# version.pl
+#
+# Loudwater Version
+#
+# (C) Copyright 2009 Fred Gleason <fgleason@radiomaerica.org>
+#
+
+$loudwater_version="@VERSION@";

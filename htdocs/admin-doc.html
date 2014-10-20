@@ -1,0 +1,1548 @@
+<html>
+<head><title>Loudwater Content Management System</title></head>
+<body bgcolor="#FFFFFF">
+<table width="760" border="0" cellspacing="0" cellpadding="0">
+
+<tr><td align="center" colspan="3"><big><big><big><strong>Loudwater Content Management System</strong>
+</big></big></big></td></tr>
+
+<tr><td align="center" valign="top" colspan="3"><big><big><strong>Administrative Interface</strong></big></big>
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+
+
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr><td align="center" valign="top" colspan="3"><big><strong>Edit Server Data Screen</strong></big>
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="server_hostname">HOSTNAME</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">The <em>hostname</em> parameter is the fully-qualified 
+domain name of the server to which this configuration record refers.
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="server_ip_address">IP ADDRESS</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">The <em>ip address</em> parameter is the IPv4 address 
+of the server, in dotted-quad notation.
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="server_total_threads">TOTAL THREADS</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">The <em>total threads</em> parameter is the absolute limit 
+on total number of simultaneous work threads (ingest, encode, distribution 
+and maintenance) that lwpd(8) will allow on this server.
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="server_ingest_threads">INGEST THREADS</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">The <em>ingest threads</em> parameter is the maximum number
+of simultaneous ingest threads that lwpd(8) will allow on this server.
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="server_encode_threads">ENCODE THREADS</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">The <em>encode threads</em> parameter is the maximum number
+of simultaneous encode threads that lwpd(8) will allow on this server.
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="server_distribution_threads">DISTRIBUTION THREADS</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">The <em>distribution threads</em> parameter is the maximum 
+number of simultaneous distribution threads that lwpd(8) will allow on this 
+server.
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="server_maintenance_threads">MAINTENANCE THREADS</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">The <em>maintenance threads</em> parameter is the maximum 
+number of simultaneous maintenance threads that lwpd(8) will allow on this 
+server.
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr><td align="center" valign="top" colspan="3"><big><strong>Add Player Screen</strong></big>
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="new_player_name">PLAYER NAME</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">The <em>player name</em> parameter uniquely identifies a
+ partcular player configuration.  It is passed as the &apos;name=&apos; 
+ parameter in the URL when invoking the player.
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+
+
+
+<tr><td align="center" valign="top" colspan="3"><big><strong>Edit Player Screen</strong></big>
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="player_name">PLAYER NAME</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">The <em>player name</em> is a read-only parameter.  It 
+uniquely identifies a partcular player configuration and is passed as the
+ &apos;name=&apos; parameter in the URL when invoking the player.
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="title">TITLE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>title</em> parameter determines the text that will appear on
+the title bar of the player.
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="layout">LAYOUT</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>layout</em> parameter determines basic player layout and video screen
+width.  Two layouts are available:
+<li><strong>Standard</strong> - Optimized for use with video with a 4x3 aspect
+  ratio.
+<li><strong>Wide-Screen</strong> - Optimized for use with video with a 16x9
+  aspect ratio.
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="playlist_position">PLAYLIST POSITION</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>playlist position</em> parameter determines where the playlist will be
+positioned relative to the video display.  Possible options are:
+<li><strong>Left</strong> - Display playlist to the left of the video area.
+<li><strong>Right</strong> - Display playlist to the right of the video area.
+<li><strong>Below</strong> - Display playlist below the video area.
+<li><strong>Over</strong> - Display playlist in the same region as the video
+area, hiding it when media is actually playing.
+<li><strong>None</strong> - Do not display a playlist at all.
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="playlist_fgcolor">PLAYLIST TEXT COLOR</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>playlist text color</em> parameter determines the color that 
+will be used in the playlist text of the player.  This should be a web 
+RGB value (e.g. "#123456").
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="playlist_bgcolor">PLAYLIST BACKGROUND COLOR</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>playlist background color</em> parameter determines the color that 
+will be used in the playlist background of the player.  This should be a web 
+RGB value (e.g. "#123456").
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="playlist_hgcolor">PLAYLIST HIGHLIGHT COLOR</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>playlist highlight color</em> parameter determines the highlight color
+that will be used in the playlist text of player when the user floats the
+mouse over an entry.  This should be a web RGB value (e.g. "#123456").
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="playlist_sgcolor">SCREEN BACKGROUND COLOR</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>screen background color</em> parameter determines the color that 
+will be used in the background of the video screen.  This should be a web 
+RGB value (e.g. "#123456").
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="bgcolor">OVERALL BACKGROUND COLOR</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>overall background color</em> parameter determines the color that 
+will be used in the overall background of the player.  This should be a web 
+RGB value (e.g. "#123456").
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="splash_link">SPLASH LINK</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>splash link</em> parameter is a URL that points to an FLV video
+that the player will run once when it is first initialized.  If no splash
+video is desired, then this field should be left blank.
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="audio_logo_link">AUDIO LOGO LINK</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>audio logo link</em> parameter is a URL that points to an image or
+video to be displayed during the playing of on-demand audio-only content.
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="video_logo_link">VIDEO LOGO LINK</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>video logo link</em> parameter is a URL that points to an image or
+video to be displayed during the playing of on-demand video content.
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="base_branding_link">CUSTOM BRANDING LINK</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr><td colspan="2">
+The <em>custom branding link</em> parameter is a URL that points to the
+directory that contains the custom branding content for this player.
+<p>
+Branding content is invoked by passing a 'brandid=&lt;id&gt;' argument when
+spawning the player or banner.  The following custom-branded elements are
+loaded, overriding the elements specified in the player's base configuration:
+</td></tr>
+<tr><td colspan="2">&nbsp;</td></tr>
+<tr>
+<th>FILENAME</th><th>CONTENT</th>
+</tr>
+<tr>
+<td align="center">audiologo_&lt;id&gt;.jpg</td>
+<td align="center">Audio Logo</td>
+</tr>
+<tr>
+<td align="center">videologo_&lt;id&gt;.jpg</td>
+<td align="center">Video Logo</td>
+</tr>
+<tr>
+<td align="center">hbannerlogo_&lt;id&gt;.png</td>
+<td align="center">Horzontal Banner Logo</td>
+</tr>
+<tr>
+<td align="center">hbannertext_&lt;id&gt;.png</td>
+<td align="center">Horzontal Banner Text Background</td>
+</tr>
+<tr>
+<td align="center">vbannerlogo_&lt;id&gt;.png</td>
+<td align="center">Vertical Banner Logo</td>
+</tr>
+<tr>
+<td align="center">vbannertext_&lt;id&gt;.png</td>
+<td align="center">Vertical Banner Text Background</td>
+</tr>
+<tr>
+<td align="center">gateway_&lt;id&gt;.flv</td>
+<td align="center">Gateway Video</td>
+</tr>
+</table>
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="link_button_code">LINK BUTTON CODE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>link button code</em> parameter is currently unimplemented.
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="banner_himage_url">BANNER
+ HIMAGE URL</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>banner himage url</em> is a URL to the image to display in the
+&quot;horizontal&quot; style click-through banner for this player.
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="banner_himage_width">BANNER
+ HIMAGE WIDTH</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>banner himage width</em> is the width (in pixels) to apply to the
+image in the &quot;horizontal&quot; style click-through banner for this 
+player.
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="banner_vimage_url">BANNER
+ VIMAGE URL</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>banner vimage url</em> is a URL to the image to display in the
+&quot;vertical&quot; style click-through banner for this player.
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="banner_vimage_height">BANNER
+ VIMAGE HEIGHT</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>banner vimage height</em> is the height (in pixels) to apply to the
+image in the &quot;vertical&quot; style click-through banner for this 
+player.
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="default_link">DEFAULT LINK</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>default link</em> parameter is a URL that points to playlist to be
+displayed when a live stream is requested at a time when no live stream is
+active.
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="live_segments">LIVE SEGMENTS</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>live segments</em> section lists the currently configured live 
+segments for this player.  Segments can be added, deleted or changed by 
+clicking the <strong>Edit Live Segment</strong> button at the bottom of the
+Edit Player screen.
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="ando_station_id">ANDO
+STATION ID</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>ando station id</em> parameter is an integer value used to associate 
+this player to a particular &quot;station&quot; defined in the Ando Ad 
+Injection system.  If no Ando station is desired, enter a &quot;0&quot; for
+this parameter.
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="ad_quality">AD QUALITY</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>ad quality</em> parameter is an integer value used to indicate 
+the quality/bandwidth of the ad creatives inserted by Ando.  Legal values are:
+<li>1 = Low (32 kbit/sec typical)
+<li>2 = Medium (64 kbit/sec typical)
+<li>3 = High
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+
+<tr valign="top"><td align="right"><strong><a name="use_synched_banners">USE
+	SYNCHED BANNERS</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>use synched banners</em> parameter is a boolean value used to indicate 
+whether or not synched banners supplied by Ando should be displayed in the
+player.  The use of synched banners is incompatible with certain other ad
+serving systems (e.g. Google AdSense).
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+
+<tr valign="top"><td align="right"><strong><a name="button_section_image_link">
+BUTTON SECTION IMAGE LINK</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>button section image link</em> parameter is a URL that points to an
+image to be displayed in place of the Channel Button section of the player.
+The dimensions of the image should be 296x128.  NOTE: this image will be
+displayed only if the <strong>BUTTON COLUMNS</strong> and <strong>BUTTON
+ROWS</strong> parameters are &quot;0&quot;.
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="button_columns">
+BUTTON COLUMNS</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>button columns</em> parameter is an integer that indicates the
+number of columns of buttons to display in the Channel Button section of the
+player.
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="button_rows">
+BUTTON ROWS</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>button rows</em> parameter is an integer that indicates the
+number of rows of buttons to display in the Channel Button section of the
+player.
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="head_code">
+HEAD CODE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>head code</em> parameter is arbitrary HTML code to be included in
+the <strong>head</strong> section of the player.  A typical use would be to
+include scripts needed to operate with third-party ad management systems
+(e.g. Google AdSense).
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="top_banner_code">
+TOP BANNER CODE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>top banner code</em> parameter is HTML code for displaying and linking
+to the banner to be displayed in the top banner position of the player.
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="side_banner_code">
+SIDE BANNER CODE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>side banner code</em> parameter is HTML code for displaying and linking
+to the banner to be displayed in the side banner position of the player.
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="social_test">
+SOCIAL TEST</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>social test</em> parameter enables display of the icon for the
+'test' social media service in the player.  [NOTE: this parameter is for
+testing only, and should <em>never</em> be used on a production player!]
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="social_display_link">
+SOCIAL DISPLAY LINK</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>social display link</em> parameter enables display of the direct URL
+for the currently selected episode in the player.
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="social_facebook">
+SOCIAL FACEBOOK</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>social facebook</em> parameter enables display of the <em>Like</em>
+button for the FaceBook social media service in the player.  Enabling this
+parameter will also require that the <em>social facebook admin</em> parameter
+(see below) be configured.
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="social_facebook_admin">
+SOCIAL FACEBOOK ADMIN</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>social facebook admin</em> parameter is used to specify the FaceBook
+administrator or application ID for this page.
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr><td align="center" valign="top" colspan="3"><big><strong>Edit Channel Screen</strong></big>
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="channel_name">NAME</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>name</em> parameter is a read-only field that contains the name of the
+channel.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="channel_title">TITLE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>title</em> parameter is a text field.  This value will appear by
+default in the <em>TITLE</em> field in new posts.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="channel_description">DESCRIPTION</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>description</em> parameter is a multiline text field.  This value
+will appear by default in the <em>DESCRIPTION</em> field in the media's 
+metadata.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="channel_category">CATEGORY</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>category</em> parameter is a text field.  This value will appear by
+default in the <em>CATEGORY</em> field in new posts.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="channel_link">LINK</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>link</em> parameter is a URL, and should point to a page where
+more information regarding the referenced content can be found.  This value
+will appear by default in the <em>LINK</em> field in new posts.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="channel_copyright">COPYRIGHT</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>copyright</em> parameter is a text field and should contain the
+year and owner name for a copyright notice for the referenced content 
+(e.g. &quot;2009 Big Company&quot;).  This value will appear by default in
+the <em>COPYRIGHT</em> field in new posts.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="channel_webmaster">WEBMASTER</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>webmaster</em> parameter is a text field and should contain the
+e-mail address for the editor responsible for the referenced content 
+(e.g. &quot;editor@example.com&quot;).  This value will appear by default in
+the <em>WEBMASTER</em> field in new posts.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="channel_author">AUTHOR</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>author</em> parameter is a text field and should contain the
+name of the author of the referenced content.  This value will appear
+ by default in the <em>AUTHOR</em> field in new posts.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="channel_owner">OWNER</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>owner</em> parameter is a text field and should contain the
+name of the owner of the referenced content.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="channel_owner_email">OWNER_EMAIL</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>owner email</em> parameter is a text field and should contain the
+e-mail address for the owner of the referenced content 
+(e.g. &quot;owner@example.com&quot;).
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="channel_subtitle">SUBTITLE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>subtitle</em> parameter is a text field and should contain the
+subtitle for the referenced channel.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="channel_category_itunes">ITUNES CATEGORY</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>itunes category</em> parameter is a text field and should contain the
+category fields for the iTunes aggregator site for the referenced channel.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="channel_keywords">KEYWORDS</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>keywords</em> parameter is a text field and should contain the
+keywords for the referenced channel.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="channel_explicit">EXPLICIT</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>explicit</em> parameter is a drop-down menu with three choices: 
+<em>Yes</em>, to indicate that the channel contains explicit content; 
+<em>Clean</em>, to indicate that the channel contains no explicit content, and 
+<em>No</em>, to provide no indication as to the nature of the channel
+contents.  This value will appear by default in the <em>EXPLICIT</em> field
+in new posts.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="channel_language">LANGUAGE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>language</em> parameter is a text field and should contain the
+ISO language code for the language used in the referenced content 
+(e.g. American English would use &quot;en_us&quot;).  This value will appear
+by default in the <em>LANGUAGE</em> field in new posts.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="channel_max_upload_size">MAXIMUM UPLOAD SIZE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>maximum upload size</em> parameter is the maximum file length
+(measured in bytes) that will be accepted for upload in this channel.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="thumbnail_upload_url">THUMBNAIL UPLOAD URL</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>thumbnail upload url</em> parameter is a URL that points to the remote 
+directory to be used to serve thumbnail images for this channel.  The protocol
+used must be one that is capable of uploading content (e.g. &quot;ftp://&quot;).
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="thumbnail_upload_username">THUMBNAIL UPLOAD USERNAME</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>thumbnail upload username</em> parameter is username for the account 
+used to authenticate thumbnail image uploads to the server.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="thumbnail_upload_password">THUMBNAIL UPLOAD PASSWORD</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>thumbnail upload password</em> parameter is the password associated 
+with the <em>thumbnail upload username</em> parameter (above) for 
+authenticating thumbnail image uploads to the server.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="thumbnail_download_url">THUMBNAIL DOWNLOAD URL</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>thumbnail download url</em> parameter is a URL that points to the 
+remote directory to be used to serve thumbnail images for this channel.  
+This value will form the basis of download URL served to clients.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="thumbnail_download_url">THUMBNAIL DOWNLOAD URL</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>thumbnail download url</em> parameter is a URL that points to the remote 
+directory to be used to serve thumbnail images for this channel.  The protocol
+used must be one that is capable of downloading content (e.g. 
+&quot;http://&quot;).
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="channel_default_thumbnail">DEFAULT THUMBNAIL</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>default thumbnail</em> parameter specifys the default thumbnail 
+image that will be used for content on this channel.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_download_preamble">DOWNLOAD PREAMBLE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>download preamble</em> parameter is a URL that is inserted into the
+download URL generated to clients.  It can be used to direct downloads through
+third-party traffic measurements systems.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="channel_taps">CHANNEL TAPS</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>channel taps</em> list show the set of configured taps for the
+channel.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr><td align="center" valign="top" colspan="3"><big><strong>Edit Live Segment Screen</strong></big>
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="live_link">LIVE LINK</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>live link</em> parameter is a URL that points to the live stream to
+be played during the defined days/times.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="logo_link">LOGO LINK</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>logo link</em> parameter is a URL that points to an image or video to
+be displayed during playout of the associated live stream.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="logo_sid">ANDO
+STATION ID</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>ando station id</em> parameter is an integer value used to associate 
+this stream to a particular &quot;station&quot; defined in the Ando Ad 
+Injection system.  If no Ando station is desired, enter a &quot;0&quot; for
+this parameter.
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="start_time">START TIME</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>start time</em> parameter is the time at which live playout for the 
+segment begins.  This value should be in Universal Coordinated Time (UTC) 
+(formerly known as &quot;Greenwich Mean Time&quot;).
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="run_hours">RUN HOURS</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>run hours</em> parameter is the number of hours following
+the <strong>START TIME</strong> that the segment will be active.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="run_on">RUN ON</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>run on</em> section indicates which day(s) of the week the segment
+will be active on.  The day of the week will be calculated on the basis of
+Coordinated Universal Time (formerly known as &quot;Greenwich Mean Time&quot;).
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr><td align="center" valign="top" colspan="3"><big><strong>Edit Channel
+	Button Screen</strong></big>
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="image_url">IMAGE URL</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>image url</em> parameter is a URL that points to the image to display
+on the channel button when the channel is not selected.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="active_image_url">ACTIVE IMAGE URL</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>active image url</em> parameter is a URL that points to the image to
+display on the channel button when the channel is currently selected.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="clickthrough_url">CLICK-THROUGH URL</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>click-through url</em> parameter is a URL that points to the
+playlist to be loaded in the player when the button is clicked.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="button_sid">ANDO
+STATION ID</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>ando station id</em> parameter is an integer value used to associate 
+this channel to a particular &quot;station&quot; defined in the Ando Ad 
+Injection system.  If no Ando station is desired, enter a &quot;0&quot; for
+this parameter.
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="button_mode">BUTTON MODE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>button mode</em> parameter is used to configure this button as either
+a <em>live feed</em> or <em>on demand</em> selector.  When set for 'OnDemand
+Channel' (the default), clicking the button will cause the player to execute
+the <em>click through url</em> parameter, whereas a setting of 'Live Feed'
+will cause the appropriate configured live feed to be started.
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr><td align="center" valign="top" colspan="3"><big><strong>Edit Post Screen</strong></big>
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="post_name">NAME</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>name</em> parameter is a read-only field that contains the name of the
+channel to which the post belongs.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="post_title">TITLE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>title</em> parameter is a text field.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="post_description">DESCRIPTION</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>description</em> parameter is a multiline text field.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="post_category">CATEGORY</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>category</em> parameter is a text field.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="post_link">LINK</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>link</em> parameter is a URL, and should point to a page where
+more information regarding the referenced content can be found.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="post_copyright">COPYRIGHT</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>copyright</em> parameter is a text field and should contain the
+year and owner name for a copyright notice for the referenced content 
+(e.g. &quot;2009 Big Company&quot;).
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="post_webmaster">WEBMASTER</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>webmaster</em> parameter is a text field and should contain the
+e-mail address for the editor responsible for the referenced content 
+(e.g. &quot;editor@example.com&quot;).
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="post_comments">COMMENTS</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>comments</em> parameter is a text field and should contain audience 
+comments for the referenced content.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="post_air_date">AIR DATE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>air date</em> parameter is a text field that should contain the
+nominal date of the original airing of the broadcast, in format MM/DD/YYYY.
+For new posts, this value will default to the date of the post.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="post_air_hour">AIR HOUR</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>air hour</em> parameter is an integer field that should contain the
+nominal hour of the original airing of the broadcast, starting with '1'.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="post_language">LANGUAGE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>language</em> parameter is a text field and should contain the
+ISO language code for the language used in the referenced content 
+(e.g. American English would use &quot;en_us&quot;).
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="post_active">ACTIVE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>active</em> box indicates the current status of the post.
+When set to <strong>Yes</strong>, the post will be visible online, whereas 
+setting the value to <strong>No</strong> will hide the post online.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="post_segments">SEGMENTS</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>segments</em> parameter is a read-only value that indicates the number
+of segments that comprise the post.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="post_origin_datetime">POSTED ON</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>POSTED ON</em> parameter is a read-only value that indicates the date and
+time that the post was uploaded.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="post_origin_user">POSTED BY</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>POSTED BY</em> parameter is a read-only value that indicates the name of
+user that uploaded the post.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="post_origin_address">POSTED FROM</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>POSTED FROM</em> parameter is a read-only value that indicates IP address
+of the system from which the post was uploaded.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="post_job_status">JOB STATUS</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>JOB STATUS</em> parameter is a read-only value indicates the current
+status of the post.  The possible values are:
+<table cellpadding="5" cellspacing="0" border="1">
+<tr><td align="center" valign="top">
+<font color="#00FF00">Complete</font>
+</td>
+<td align="left">
+Processing is complete and the post visible online.
+</td>
+</tr>
+<tr>
+<td align="center" valign="top">
+<font color="#777700">Uploading</font>
+</td>
+<td align="left">
+The post is in the process of being uploaded.
+</td>
+</tr>
+<tr>
+<td align="center" valign="top">
+<font color="#777700">Queued for Ingest</font>
+</td>
+<td align="left">
+The post has been uploaded and is waiting for ingest processing.
+</td>
+</tr>
+<tr>
+<td align="center" valign="top">
+<font color="#777700">Ingesting</font>
+</td>
+<td align="left">
+The post is currently being ingested.
+</td>
+</tr>
+<tr>
+<td align="center" valign="top">
+<font color="#777700">Queued for Encode</font>
+</td>
+<td align="left">
+The post has been ingested and is waiting for encoding.
+</td>
+</tr>
+<tr>
+<td align="center" valign="top">
+<font color="#777700">Encoding</font>
+</td>
+<td align="left">
+The post is currently being encoded.
+</td>
+</tr>
+<tr>
+<td align="center" valign="top">
+<font color="#777700">Queued for Distribution</font>
+</td>
+<td align="left">
+The post has been encoded and is waiting for distribution to one or more 
+tap site(s).
+</td>
+</tr>
+<tr>
+<td align="center" valign="top">
+<font color="#777700">Distributing</font>
+</td>
+<td align="left">
+The post is currently being distributed to one or more tap sites.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+
+<tr><td align="center" valign="top" colspan="3"><big><strong>Edit Tap Screen</strong></big>
+</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_channel_name">CHANNEL NAME</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>channel name</em> parameter is a read-only field that contains the
+name of the channel to which this tap belongs.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_title">TITLE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>title</em> parameter is a text field which appears in listings
+of the taps for a given channel.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_origin_datetime">CREATED ON</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>created on</em> parameter is a read-only value that gives the date
+and time when this tap was created.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_last_build_datetime">LAST MODIFIED ON</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>last modified on</em> parameter is a read-only value that gives the
+date and time when the configuration and/or content of the tap was last
+changed.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_visibility_window">VISIBILITY WINDOW</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>visibility window</em> parameter is an interger value that indicates
+for how many days past the <em>air date</em> should be visible on the tap
+listing.  When this period is past, the underlying media will be available via 
+direct linking.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_upload_url">UPLOAD URL</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>upload url</em> parameter is a URL that points to the remote 
+directory to be used to serve content for this tap.  The protcol used 
+must be one that is capable of uploading content (e.g. &quot;ftp://&quot;).
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_upload_username">UPLOAD USERNAME</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>upload username</em> parameter is username for the account used
+to authenticate content uploads to the server.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_upload_password">UPLOAD PASSWORD</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>upload password</em> parameter is the password associated with the
+<em>upload username</em> parameter (above) for authenticating content uploads
+to the server.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_download_url">DOWNLOAD URL</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>download url</em> parameter is a URL that points to the remote 
+directory to be used to serve content for this tap.  This value will form
+the basis of download URL served to clients.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_download_preamble">DOWNLOAD PREAMBLE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>download preamble</em> parameter is a URL that is inserted into the
+download URL generated to clients.  It can be used to direct downloads through
+third-party traffic measurements systems.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_ping_url">PING URL</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>ping url</em> parameter is a URL that is executed each time the 
+configuration or content of the tap changes.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_validation_url">VALIDATION URL</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>validation url</em> parameter is a URL to be used when validating the
+feed by means of the 'Validate' button on the 'Links' page.  If left blank,
+then no 'Validate' button will be displayed for the tap.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="transparency_mode">TRANSPARENCY MODE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>transparency mode</em> parameter is a boolean that, when set to 'yes',
+causes the raw input file uploaded to the channel to be sent directly to the
+specified tap location without any processing or conversion whatever.  NOTE:
+this parameter is mutually exclusive with the
+<a href="admin-doc.html#tap_audio_encoder">audio encoder command</a>,
+<a href="admin-doc.html#tap_audio_extension">audio extension</a>,
+<a href="admin-doc.html#tap_video_encoder">video encoder command</a> and
+<a href="admin-doc.html#tap_video_extension">video extension</a>
+parameters.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_audio_encoder">AUDIO ENCODER COMMAND</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>audio encoder command</em> parameter is the CLI command to be executed
+to encode audio-only content for this tap.  The following wildcard characters
+are supported:
+<table cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th>Wildcard</th><th>Value</th>
+</tr>
+<tr>
+<td>%f</td><td>Input filename</td>
+</tr>
+<tr>
+<td>%F</td><td>Output filename</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_audio_extension">AUDIO EXTENSION</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>audio extension</em> parameter is the filename extension to use
+for files produced with the <em>audio encoder command</em> (e.g. 
+&quot;mp3&quot;, &quot;ogg&quot;).
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_audio_mimetype">AUDIO MIMETYPE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>audio mimetype</em> parameter is the mimetype string to use when
+serving audio content on this tap.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_video_encoder">VIDEO ENCODER COMMAND</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>video encoder command</em> parameter is the CLI command to be executed
+to encode audio/video content for this tap.  The following wildcard characters
+are supported:
+<table cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th>Wildcard</th><th>Value</th>
+</tr>
+<tr>
+<td>%f</td><td>Input filename</td>
+</tr>
+<tr>
+<td>%F</td><td>Output filename</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_video_extension">VIDEO EXTENSION</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>video extension</em> parameter is the filename extension to use
+for files produced with the <em>video encoder command</em> (e.g. 
+&quot;avi&quot;, &quot;flv&quot;).
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_video_mimetype">VIDEO MIMETYPE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>video mimetype</em> parameter is the mimetype string to use when
+serving video content on this tap.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_audio_samplerate">FORCE AUDIO SAMPLERATE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>force audio samplerate</em> parameter is the sample rate (in samples
+per second) to which audio should be converted before executing the encoder
+phase.  If no sample rate is preferred, this field should be left blank.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_audio_channels">FORCE AUDIO CHANNELS</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>force audio channels</em> parameter is the number of channels
+to which audio should be converted before executing the encoder
+phase.  If no channel count is preferred, this field should be left blank.
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_header_xml">HEADER TEMPLATE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>header template</em> parameter is text which is prepended to the
+playlist data served for this tap.
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_channel_xml">CHANNEL TEMPLATE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>channel template</em> parameter is text which is included in
+the channel section of the playlist data served for this tap.  The following
+wildcards are supported:
+<br>
+<table cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th>Wildcard</th><th>Value</th>
+</tr>
+<tr>
+<td>%CHANNEL_NAME%</td><td>The <a href="#channel_name">name</a> parameter 
+for the channel.</td>
+</tr>
+<tr>
+<td>%CHANNEL_TITLE%</td><td>The <a href="#channel_title">title</a> parameter
+for the channel.</td>
+</tr>
+<tr>
+<td>%CHANNEL_DESCRIPTION%</td><td>The <a href="#channel_description">description</a>
+parameter for the channel.</td>
+</tr>
+<tr>
+<td>%CHANNEL_CATEGORY%</td><td>The <a href="#channel_category">category</a>
+parameter for the channel.</td>
+</tr>
+<tr>
+<td>%CHANNEL_LINK%</td><td>The <a href="#channel_link">link</a>
+parameter for the channel.</td>
+</tr>
+<tr>
+<td>%CHANNEL_COPYRIGHT%</td><td>The <a href="#channel_copyright">copyright</a>
+parameter for the channel.</td>
+</tr>
+<tr>
+<td>%CHANNEL_WEBMASTER%</td><td>The <a href="#channel_webmaster">webmaster</a>
+parameter for the channel.</td>
+</tr>
+<tr>
+<td>%CHANNEL_LANGUAGE%</td><td>The <a href="#channel_language">language</a>
+parameter for the channel.</td>
+</tr>
+<tr>
+<td>%TAP_URL%</td><td>The URL of the referenced tap.</td>
+</tr>
+<tr>
+<td>%PUBLISH_DATE%</td><td>The date/time that the channel was created.</td>
+</tr>
+<tr>
+<td>%BUILD_DATE%</td><td>The date/time that the channel was last updated.</td>
+</tr>
+<tr>
+<td>%GENERATOR%</td><td>Loudwater name and version number.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+<tr valign="top"><td align="right"><strong><a name="tap_item_xml">ITEM TEMPLATE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>item template</em> parameter is text which is included in
+the item section of the playlist data served for this tap.  The following
+wildcards are supported:
+<br>
+<table cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th>Wildcard</th><th>Value</th>
+</tr>
+<tr>
+<td>%ITEM_NAME%</td><td>The <em>name</em> parameter for the item.</td>
+</tr>
+<tr>
+<td>%ITEM_TITLE%</td><td>The <em>title</em> parameter
+for the item.</td>
+</tr>
+<tr>
+<td>%ITEM_DESCRIPTION%</td><td>The <em>description</em>
+parameter for the item.</td>
+</tr>
+<tr>
+<td>%ITEM_CATEGORY%</td><td>The <em>category</em>
+parameter for the item.</td>
+</tr>
+<tr>
+<td>%ITEM_LINK%</td><td>The <em>link</em>
+parameter for the item.</td>
+</tr>
+<tr>
+<td>%ITEM_COPYRIGHT%</td><td>The <em>copyright</em>
+parameter for the item.</td>
+</tr>
+<tr>
+<td>%ITEM_WEBMASTER%</td><td>The <em>webmaster</em>
+parameter for the item.</td>
+</tr>
+<tr>
+<td>%ITEM_LANGUAGE%</td><td>The <em>language</em>
+parameter for the item.</td>
+</tr>
+<tr>
+<td>%ITEM_PUBLISH_DATE%</td><td>The date/time that the item was posted.</td>
+</tr>
+<tr>
+<td>%ITEM_CONTENT_URL%</td><td>The URL to the media content.</td>
+</tr>
+<tr>
+<td>%ITEM_AIR_DATE%</td><td>The nominal air date of the item, in RFC822 
+format.</td>
+</tr>
+<tr>
+<td>%ITEM_AIR_HOUR%</td><td>The nominal air hour of the item.</td>
+</tr>
+<tr>
+<td>%ITEM_LAST_MODIFIED_DATETIME%</td><td>The date/time that this item's 
+metadata was last modified, in RFC822 format.</td>
+</tr>
+<tr>
+<td>%ITEM_CONTENT_MIMETYPE%</td><td>The MIME type string to serve with
+ the media content.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+
+<tr valign="top"><td align="right"><strong><a name="tap_footer_xml">FOOTER TEMPLATE</a></strong></td>
+<td width="20">&nbsp;</td>
+<td align="left">
+The <em>footer template</em> parameter is text which is appended to the
+playlist data served for this tap.
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+<tr><td width="760"colspan="3">&nbsp;</td></tr>
+
+
+</table>
+</body>
+</html>

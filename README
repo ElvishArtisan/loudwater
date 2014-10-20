@@ -1,0 +1,13 @@
+This is the README file for the Loudwater package.
+
+EMBED CODES:
+Horizontal Banner:
+<iframe frameborder="0" scrolling="no" width="468" height="60" 
+marginwidth="0" marginheight="0" 
+src="http://<hostname>/loudwater/banner.pl?name=<player-name>&style=horizontal&brandid=<brand>"></iframe>
+
+Vertical Banner:
+<iframe frameborder="0" scrolling="no" width="120" height="240" 
+marginwidth="0" marginheight="0" 
+src="http://<hostname>/loudwater/banner.pl?name=<player-name>&style=vertical&brandid=<brand>"></iframe>
+

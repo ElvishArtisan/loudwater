@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript"
+	src="banner.pl?name=%NAME%%URL_ARG%&section=head&sn=%RANDOM%"></script>
+<title>%TITLE%</title>
+</head>
+<body onload="StartBanner();">
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="%PLAYLIST_BGCOLOR%"
+       onclick="StartPlayer();">
+<tr>
+<td style="cursor: pointer;" align="center" valign="top">
+<img height="%BANNER_HTOTAL_HEIGHT%" width="%BANNER_HIMAGE_WIDTH%" 
+     src="%BANNER_HIMAGE_URL%" border="0">
+</td>
+
+<!-- Episode Data -->
+<td>
+<div style="overflow:hidden; height:%BANNER_HTOTAL_HEIGHT%px; width:%BANNER_HTEXT_WIDTH%px;
+	    color:%PLAYLIST_FGCOLOR%;
+	    font-family: Arial, Helvetica, san-sarif;
+	    font-size: 14px; cursor: pointer;
+            vertical-align:text-bottom;
+	    %BANNER_HTEXT_SECTION%
+            background-repeat:no-repeat;">
+<table id="feedtable" width="%BANNER_HTEXT_WIDTH%" cellpadding="5" cellspacing="0" border="0">
+<tr><td id="title_cell" align="center">&nbsp;</td></tr>
+</table>
+</div>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<html>
+<head>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+  function TestXML() {
+    var form='NAME='+Id("NAME").value;
+    form+='&URL='+Id("URL").value;
+    form+='&BUTTON='+Id("BUTTON").value;
+    form+='&STYLE='+Id("STYLE").value;
+    form+='&BRANDID='+Id("BRANDID").value;
+    PostForm(form,"/loudwater/makemap.pl");
+  }
+</script>
+<title>Loudwater MAKEMAP Service Test Harness</title>
+<body>
+<form action="/loudwater/makemap.pl" method="post" enctype="multipart/form-data">
+<table cellpadding="0" cellspacing="2" border="0">
+<tr>
+<td align="right">NAME:</td>
+<td><input id="NAME" type="text" name="NAME" size="8" maxlength="8"></td>
+</tr>
+<tr>
+<td align="right">URL:</td>
+<td><input id="URL" type="text" name="URL" size="40" maxlength="255"></td>
+</tr>
+<tr>
+<td align="right">BUTTON:</td>
+<td><input id="BUTTON" type="text" name="BUTTON" size="1" maxlength="1"></td>
+</tr>
+<tr>
+<td align="right">STYLE:</td>
+<td><input id="STYLE" type="text" name="STYLE" size="8" maxlength="8"></td>
+</tr>
+<tr>
+<td align="right">BRANDID:</td>
+<td><input id="BRANDID" type="text" name="BRANDID" size="20" maxlength="20"></td>
+</tr>
+<tr>
+<td colspan="2" align="right">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" align="right"><input type="submit" value="OK"></td>
+</tr>
+<tr>
+  <td colspan="2" align="right">
+    <input type="button" onclick="TestXML();" value="Test XML">
+  </td>
+</tr>
+</table>
+</form>
+</body>
+</html>

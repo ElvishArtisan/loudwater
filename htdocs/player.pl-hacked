@@ -1,0 +1,380 @@
+#!/usr/bin/perl
+
+# player.pl
+#
+# Serve an audio player
+#
+# (C) Copyright 2009 Fred Gleason <fgleason@radiomaerica.org>
+#
+
+use DBI;
+
+#
+# Load Command Line
+#
+@ii=split /&/,$ENV{'QUERY_STRING'};
+for ($i=0;$i<=$#ii;$i++) {
+  @jj=split /=/,@ii[$i];  #/
+  $cmdline{@jj[0]}=@jj[1];
+}
+if($cmdline{"name"} eq "") {
+  print "Content-type: text/html\n\n";
+  printf "Missing player name!";
+  exit 0;
+}
+
+#
+# Fire up the DB connection
+#
+do "/etc/loudwater_conf.pl";
+$dbh=DBI->connect("dbi:mysql:$loudwater_db_dbname:$loudwater_db_hostname",
+		  $loudwater_db_username,$loudwater_db_password);
+if(!$dbh) {
+    print $post->header(-type=>'text/html');
+    print "unable to open database\n";
+    exit 0;
+}
+
+#
+# Fetch the player setup from the DB
+#
+my $sql=sprintf "select NAME,TITLE,SPLASH_LINK,LIVE_LINK,DEFAULT_LINK,\
+                 AUDIO_LOGO_LINK,VIDEO_LOGO_LINK,LIVE_DIVIDER_HOUR,\
+                 LIVE_ONDEMAND_LINK,LIVE_LIVE1_LINK,LIVE_LIVE2_LINK,\
+                 LIVE_INACTIVE_LINK,SID,GATEWAY_QUALITY,BUTTON_SECTION_IMAGE,\
+                 BUTTON_COLUMNS,BUTTON_ROWS,TOP_BANNER_CODE,SIDE_BANNER_CODE,\
+                 OPTIONAL_LINK_CODE,HEAD_CODE from PLAYERS where NAME=\"%s\"",
+    $cmdline{"name"};
+my $q=$dbh->prepare($sql);
+$q->execute();
+if(!($row=$q->fetchrow_arrayref)) {
+    print "Content-type: text/html\n\n";
+    printf "Invalid player name!";
+    exit 0;
+}
+$player_title=@$row[1];
+$player_splash_link=@$row[2];
+$player_live_link=@$row[3];
+$player_default_link=@$row[4];
+$player_audio_logo_link=@$row[5];
+$player_video_logo_link=@$row[6];
+$player_live_divider_hour=@$row[7];
+$player_live_ondemand_link=@$row[8];
+$player_live_live1_link=@$row[9];
+$player_live_live2_link=@$row[10];
+$player_live_inactive_link=@$row[11];
+$player_sid=@$row[12];
+$player_gateway_quality="adURL_low";
+if(@$row[13]==2) {
+    $player_gateway_quality="adURL_med";
+}
+if(@$row[13]==3) {
+    $player_gateway_quality="adURL_high";
+}
+$player_button_section_image=@$row[14];
+$player_button_columns=@$row[15];
+$player_button_rows=@$row[16];
+$player_top_banner=@$row[17];
+$player_side_banner=@$row[18];
+$player_optional_link_code=@$row[19];
+$head_script=@$row[20];
+$q->finish();
+
+#
+# Build the Button Arrays
+#
+$sql=sprintf "select BUTTON_NUMBER,IMAGE_LINK,CLICK_LINK \
+              from CHANNEL_BUTTONS where PLAYER_NAME=\"%s\" \
+              order by BUTTON_NUMBER",$cmdline{"name"}; 
+$q=$dbh->prepare($sql);
+$q->execute();
+while($row=$q->fetchrow_arrayref) {
+    @player_selector_button_images[@$row[0]]=@$row[1];
+    # Kludgy, but this works for now...
+    if(@$row[0]==1) {
+	$player_ondemand_button1_link=@$row[2];
+    }
+    if(@$row[0]==2) {
+	$player_ondemand_button2_link=@$row[2];
+    }
+    if(@$row[0]==3) {
+	$player_ondemand_button3_link=@$row[2];
+    }
+}
+$q->finish();
+
+#
+# Build the live stream schedule
+#
+$sql=sprintf "select SUN,MON,TUE,WED,THU,FRI,SAT,START_HOUR,RUN_LENGTH,\
+              LIVE_LINK,LOGO_LINK from LIVE_SEGMENTS \
+              where PLAYER_NAME=\"%s\" order by START_HOUR",
+    $cmdline{"name"};
+$q=$dbh->prepare($sql);
+$q->execute();
+my @count;
+while($row=$q->fetchrow_arrayref) {
+    if(@$row[0] eq "Y") {
+	$player_live_sun_start_hours=$player_live_sun_start_hours.
+	    sprintf "start_sun_hours[%d]=%d;",@count[0],@$row[7];
+	$player_live_sun_lengths=$player_live_sun_lengths.
+	    sprintf "start_sun_lengths[%d]=%d;",@count[0],@$row[8];
+	$player_live_sun_links=$player_live_sun_links.
+	    sprintf "live_sun_links[%d]=\'%s\';",@count[0],@$row[9];
+	$player_live_sun_logos=$player_live_sun_logos.
+	    sprintf "live_sun_logos[%d]=\'%s\';",@count[0],@$row[10];
+	@count[0]++;
+    }
+    if(@$row[1] eq "Y") {
+	$player_live_mon_start_hours=$player_live_mon_start_hours.
+	    sprintf "start_mon_hours[%d]=%d;",@count[1],@$row[7];
+	$player_live_mon_lengths=$player_live_mon_lengths.
+	    sprintf "start_mon_lengths[%d]=%d;",@count[1],@$row[8];
+	$player_live_mon_links=$player_live_mon_links.
+	    sprintf "live_mon_links[%d]=\'%s\';",@count[1],@$row[9];
+	$player_live_mon_logos=$player_live_mon_logos.
+	    sprintf "live_mon_logos[%d]=\'%s\';",@count[1],@$row[10];
+	@count[1]++;
+    }
+    if(@$row[2] eq "Y") {
+	$player_live_tue_start_hours=$player_live_tue_start_hours.
+	    sprintf "start_tue_hours[%d]=%d;",@count[2],@$row[7];
+	$player_live_tue_lengths=$player_live_tue_lengths.
+	    sprintf "start_tue_lengths[%d]=%d;",@count[2],@$row[8];
+	$player_live_tue_links=$player_live_tue_links.
+	    sprintf "live_tue_links[%d]=\'%s\';",@count[2],@$row[9];
+	$player_live_tue_logos=$player_live_tue_logos.
+	    sprintf "live_tue_logos[%d]=\'%s\';",@count[2],@$row[10];
+	@count[2]++;
+    }
+    if(@$row[3] eq "Y") {
+	$player_live_wed_start_hours=$player_live_wed_start_hours.
+	    sprintf "start_wed_hours[%d]=%d;",@count[3],@$row[7];
+	$player_live_wed_lengths=$player_live_wed_lengths.
+	    sprintf "start_wed_lengths[%d]=%d;",@count[3],@$row[8];
+	$player_live_wed_links=$player_live_wed_links.
+	    sprintf "live_wed_links[%d]=\'%s\';",@count[3],@$row[9];
+	$player_live_wed_logos=$player_live_wed_logos.
+	    sprintf "live_wed_logos[%d]=\'%s\';",@count[3],@$row[10];
+	@count[3]++;
+    }
+    if(@$row[4] eq "Y") {
+	$player_live_thu_start_hours=$player_live_thu_start_hours.
+	    sprintf "start_thu_hours[%d]=%d;",@count[4],@$row[7];
+	$player_live_thu_lengths=$player_live_thu_lengths.
+	    sprintf "start_thu_lengths[%d]=%d;",@count[4],@$row[8];
+	$player_live_thu_links=$player_live_thu_links.
+	    sprintf "live_thu_links[%d]=\'%s\';",@count[4],@$row[9];
+	$player_live_thu_logos=$player_live_thu_logos.
+	    sprintf "live_thu_logos[%d]=\'%s\';",@count[4],@$row[10];
+	@count[4]++;
+    }
+    if(@$row[5] eq "Y") {
+	$player_live_fri_start_hours=$player_live_fri_start_hours.
+	    sprintf "start_fri_hours[%d]=%d;",@count[5],@$row[7];
+	$player_live_fri_lengths=$player_live_fri_lengths.
+	    sprintf "start_fri_lengths[%d]=%d;",@count[5],@$row[8];
+	$player_live_fri_links=$player_live_fri_links.
+	    sprintf "live_fri_links[%d]=\'%s\';",@count[5],@$row[9];
+	$player_live_fri_logos=$player_live_fri_logos.
+	    sprintf "live_fri_logos[%d]=\'%s\';",@count[5],@$row[10];
+	@count[5]++;
+    }
+    if(@$row[6] eq "Y") {
+	$player_live_sat_start_hours=$player_live_sat_start_hours.
+	    sprintf "start_sat_hours[%d]=%d;",@count[6],@$row[7];
+	$player_live_sat_lengths=$player_live_sat_lengths.
+	    sprintf "start_sat_lengths[%d]=%d;",@count[6],@$row[8];
+	$player_live_sat_links=$player_live_sat_links.
+	    sprintf "live_sat_links[%d]=\'%s\';",@count[6],@$row[9];
+	$player_live_sat_logos=$player_live_sat_logos.
+	    sprintf "live_sat_logos[%d]=\'%s\';",@count[6],@$row[10];
+	@count[6]++;
+    }
+}
+$q->finish();
+if($player_live_sun_start_hours eq "") {
+    $player_live_sun_start_hours="start_sun_hours[0]=0;";
+    $player_live_sun_lengths="start_sun_lengths[0]=0;";
+    $player_live_sun_links="start_sun_links[0]=\'\';";
+    $player_live_sun_logos="start_sun_logos[0]=\'\';";
+}
+if($player_live_mon_start_hours eq "") {
+    $player_live_mon_start_hours="start_mon_hours[0]=0;";
+    $player_live_mon_lengths="start_mon_lengths[0]=0;";
+    $player_live_mon_links="start_mon_links[0]=\'\';";
+    $player_live_mon_logos="start_mon_logos[0]=\'\';";
+}
+if($player_live_tue_start_hours eq "") {
+    $player_live_tue_start_hours="start_tue_hours[0]=0;";
+    $player_live_tue_lengths="start_tue_lengths[0]=0;";
+    $player_live_tue_links="start_tue_links[0]=\'\';";
+    $player_live_tue_logos="start_tue_logos[0]=\'\';";
+}
+if($player_live_wed_start_hours eq "") {
+    $player_live_wed_start_hours="start_wed_hours[0]=0;";
+    $player_live_wed_lengths="start_wed_lengths[0]=0;";
+    $player_live_wed_links="start_wed_links[0]=\'\';";
+    $player_live_wed_logos="start_wed_logos[0]=\'\';";
+}
+if($player_live_thu_start_hours eq "") {
+    $player_live_thu_start_hours="start_thu_hours[0]=0;";
+    $player_live_thu_lengths="start_thu_lengths[0]=0;";
+    $player_live_thu_links="start_thu_links[0]=\'\';";
+    $player_live_thu_logos="start_thu_logos[0]=\'\';";
+}
+if($player_live_fri_start_hours eq "") {
+    $player_live_fri_start_hours="start_fri_hours[0]=0;";
+    $player_live_fri_lengths="start_fri_lengths[0]=0;";
+    $player_live_fri_links="start_fri_links[0]=\'\';";
+    $player_live_fri_logos="start_fri_logos[0]=\'\';";
+}
+if($player_live_sat_start_hours eq "") {
+    $player_live_sat_start_hours="start_sat_hours[0]=0;";
+    $player_live_sat_lengths="start_sat_lengths[0]=0;";
+    $player_live_sat_links="start_sat_links[0]=\'\';";
+    $player_live_sat_logos="start_sat_logos[0]=\'\';";
+}
+
+#
+# Determine Target
+#
+if($cmdline{"url"} eq "") {
+  $target_link=$player_default_link;
+  $url_link="";
+}
+else {
+  $target_link=$cmdline{"url"};
+  $url_link="&url=".$target_link;
+}
+
+#
+# Get gateway spot
+#
+$gateway_link="";
+if($cmdline{"section"} eq "head") {
+  $_=`wget --quiet -O - "http://collective.andohs.net/amtmsvc/runspotv3.2/service.asmx/RunSpot?sid=$player_sid&adformat=1&minduration=0&maxduration=900&sip=-1&latitude=-1&longitude=-1&zip=-1&spotlevel=1&categoryID=1" | grep $player_gateway_quality`;
+  s{<$player_gateway_quality>}{};
+  s{</$player_gateway_quality>}{};
+  s{^\s+}{};
+  s{\s+$}{};
+  $gateway_link=$_;
+}
+
+#
+# Build button section
+#
+$button_table="";
+if($player_button_section_image eq "") {
+  $button_table=$button_table."<table cellpadding=\"0\" cellpadding=\"0\" border=\"1\">\n";
+  for($i=0;$i<$player_button_rows;$i++) {
+    $button_table=$button_table."<tr>\n";
+    for($j=0;$j<$player_button_columns;$j++) {
+      $button_table=$button_table.sprintf("<td id=\"button%d\"><a href=\"javascript:PlayButton(%d)\" style=\"text-decoration:none\">\n",$i*$player_button_columns+$j,$i*$player_button_columns+$j);
+      $button_table=$button_table.sprintf("<img src=\"%s\" border=\"0\"></a></td>\n",@player_selector_button_images[$i*$player_button_columns+$j]);
+    }
+    $button_table=$button_table.sprintf("</tr>");
+  }
+  $button_table=$button_table."</table>\n";
+}
+else {
+  $button_table=$button_table."<table cellpadding=\"0\" cellpadding=\"0\" border=\"0\" height=\"111\">\n";
+  $button_table=$button_table."<tr>\n";
+  $button_table=$button_table."<td align=\"center\"><img border=\"0\" width=\"300\" src=\"";
+  $button_table=$button_table.$player_button_section_image;
+  $button_table=$button_table."\">\n";
+  $button_table=$button_table."</td>\n";
+  $button_table=$button_table."</tr>\n";
+  $button_table=$button_table."</table>\n";
+}
+
+#
+# Genrate Ando Tracking Tag
+#
+$ando_tag="";
+if($player_sid!=0) {
+  open TAG,"<","andotag.html";
+  while(<TAG>) {
+    s{%SID%}{$player_sid}g;
+    $ando_tag=$ando_tag.$_;
+  }
+  close TAG;
+}
+
+#
+# Serve Player
+#
+$current_time=1000*time;
+print "Content-type: text/html\n\n";
+if($cmdline{"section"} eq "head") {
+  open SOURCE,"<","player.js";
+}
+else {
+  open SOURCE,"<","player.html";
+}
+$player_random=int(rand(10000000000));
+while(<SOURCE>) {
+  s{%RANDOM%}{$player_random}g;
+  s{%CURRENT_TIME%}{$current_time}g;
+  s{%GATEWAY_LINK%}{$gateway_link}g;
+  s{%NAME%}{$cmdline{"name"}}g;
+  s{%TITLE%}{$player_title}g;
+  s{%AUDIO_LOGO_LINK%}{$player_audio_logo_link}g;
+  s{%VIDEO_LOGO_LINK%}{$player_video_logo_link}g;
+  s{%TARGET_LINK%}{$target_link}g;
+  s{%URL_LINK%}{$url_link}g;
+  s{%SPLASH_LINK%}{$player_splash_link}g;
+  s{%LIVE_LINK%}{$player_live_link}g;
+  s{%SID%}{$player_sid}g;
+  s{%LIVE_SUN_START_HOURS%}{$player_live_sun_start_hours}g;
+  s{%LIVE_MON_START_HOURS%}{$player_live_mon_start_hours}g;
+  s{%LIVE_TUE_START_HOURS%}{$player_live_tue_start_hours}g;
+  s{%LIVE_WED_START_HOURS%}{$player_live_wed_start_hours}g;
+  s{%LIVE_THU_START_HOURS%}{$player_live_thu_start_hours}g;
+  s{%LIVE_FRI_START_HOURS%}{$player_live_fri_start_hours}g;
+  s{%LIVE_SAT_START_HOURS%}{$player_live_sat_start_hours}g;
+  s{%LIVE_SUN_LENGTHS%}{$player_live_sun_lengths}g;
+  s{%LIVE_MON_LENGTHS%}{$player_live_mon_lengths}g;
+  s{%LIVE_TUE_LENGTHS%}{$player_live_tue_lengths}g;
+  s{%LIVE_WED_LENGTHS%}{$player_live_wed_lengths}g;
+  s{%LIVE_THU_LENGTHS%}{$player_live_thu_lengths}g;
+  s{%LIVE_FRI_LENGTHS%}{$player_live_fri_lengths}g;
+  s{%LIVE_SAT_LENGTHS%}{$player_live_sat_lengths}g;
+
+  s{%LIVE_SUN_LINKS%}{$player_live_sun_links}g;
+  s{%LIVE_MON_LINKS%}{$player_live_mon_links}g;
+  s{%LIVE_TUE_LINKS%}{$player_live_tue_links}g;
+  s{%LIVE_WED_LINKS%}{$player_live_wed_links}g;
+  s{%LIVE_THU_LINKS%}{$player_live_thu_links}g;
+  s{%LIVE_FRI_LINKS%}{$player_live_fri_links}g;
+  s{%LIVE_SAT_LINKS%}{$player_live_sat_links}g;
+
+  s{%LIVE_SUN_LOGOS%}{$player_live_sun_logos}g;
+  s{%LIVE_MON_LOGOS%}{$player_live_mon_logos}g;
+  s{%LIVE_TUE_LOGOS%}{$player_live_tue_logos}g;
+  s{%LIVE_WED_LOGOS%}{$player_live_wed_logos}g;
+  s{%LIVE_THU_LOGOS%}{$player_live_thu_logos}g;
+  s{%LIVE_FRI_LOGOS%}{$player_live_fri_logos}g;
+  s{%LIVE_SAT_LOGOS%}{$player_live_sat_logos}g;
+
+
+  s{%LIVE_DIVIDER_HOUR%}{$player_live_divider_hour}g;
+  s{%LIVE_ONDEMAND_LINK%}{$player_live_ondemand_link}g;
+  s{%LIVE_LIVE1_LINK%}{$player_live_live1_link}g;
+  s{%LIVE_LIVE2_LINK%}{$player_live_live2_link}g;
+  s{%LIVE_INACTIVE_LINK%}{$player_live_inactive_link}g;
+  s{%LIVE_BUTTON_IMAGE%}{$player_live_button_image}g;
+  s{%ONDEMAND_BUTTON1_LINK%}{$player_ondemand_button1_link}g;
+  s{%ONDEMAND_BUTTON2_LINK%}{$player_ondemand_button2_link}g;
+  s{%ONDEMAND_BUTTON3_LINK%}{$player_ondemand_button3_link}g;
+  s{%TOP_BANNER%}{$player_top_banner}g;
+  s{%SIDE_BANNER%}{$player_side_banner}g;
+  s{%OPTIONAL_LINK_CODE%}{$player_optional_link_code}g;
+  s{%HEAD_SCRIPT%}{$head_script}g;
+  s{%BUTTON_TABLE%}{$button_table}g;
+  s{%LIVE_FLASHVARS%}{$player_live_flashvars}g;
+  s{%ONDEMAND_FLASHVARS%}{$player_ondemand_flashvars}g;
+  s{%ANDO_TAG%}{$ando_tag}g;
+  print $_;
+}
+close SOURCE;

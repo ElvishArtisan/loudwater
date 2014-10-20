@@ -1,0 +1,11 @@
+This is the installation file for the Loudwater package.
+
+Configure invocation for RadioAmerica production (OpenSuSE 11.1):
+./configure --prefix=/usr --libexecdir=/home/raweb/htlive
+
+Configure invocation for RadioAmerica production (CentOS 6):
+./configure --prefix=/usr --libexecdir=/home/live/htdocs
+
+Configure invocation for Fred R&D (OpenSuSE 11.1):
+./configure --prefix=/usr --libexecdir=/srv/www/htdocs
+

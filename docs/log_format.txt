@@ -1,0 +1,48 @@
+                      Log file format for Loudwater
+
+Each access to a Loudwater player, channel or media object generates a record
+in the logfile.  Each record consists of a single ASCII line, terminated by
+a newline, in the following format:
+
+<datetime>,<type>,<ipv4-addr>,<user-agent>,<referrer-url>,<player-name>,
+<player-title>,<button-number>,<player-url>,<player-branding>,
+<chan-name>,<chan-title>,<chan-tap-id>,<chan-tap-title>,<post-id>,<post-title>
+
+Each data element is enclosed in double quotes ('"').  Instances of double
+quotes within an actual data field are escaped with the backslash ('\')
+character, as are instances to the backslash character itself.
+
+<datetime> - The date/time of access in the format YYYY-MM-DD hh:mm:ss.
+
+           <type> - A single ASCII character, indicating the type of access.
+                    Valid values are:
+	 	    P - Player
+		    C - Channel
+		    B - Banner
+		    E - Media Element
+
+      <ipv4-addr> - Client IP V4 address in dotted-quad notation.
+
+     <user-agent> - Client user-agent string.
+
+   <referrer-url> - The client referrer agent URL.
+
+    <player-name> - The player name.
+
+   <player-title> - The player title.
+
+     <player-url> - The player URL parameter.
+
+<player-branding> - The brand ID string.
+
+      <chan-name> - The channel name.
+
+     <chan-title> - The channel title.
+
+    <chan-tap-id> - Numeric tap ID
+
+ <chan-tap-title> - The channel tap title.
+
+        <post-id> - Numeric post ID
+
+     <post-title> - The post title.

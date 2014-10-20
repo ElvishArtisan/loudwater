@@ -1,0 +1,952 @@
+2009-05-27 Fred Gleason <fredg@paravelsystems.com>
+	* Initial package creation.
+2009-05-27 Fred Gleason <fredg@paravelsystems.com>
+	* Added a check for perl(1) in 'configure.in'.
+	* Incremented the package version to 0.0.2.
+2009-05-27 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.0.4.
+2009-05-28 Fred Gleason <fredg@paravelsystems.com>
+	* Replaced the %LOGO_LINK% variable with %AUDIO_LOGO_LINK% and
+	%VIDEO_LOGO_LINK%.
+2009-05-28 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.1.0.
+2009-05-28 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed bugs in 'htdocs/player.html' that was applying the Audio
+	logo to on-demand content.
+2009-05-28 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.1.1.
+2009-05-28 Fred Gleason <fredg@paravelsystems.com>
+	* Added a dependency for 'perl-DBD-mysql' in 'loudwater.spec.in'.
+	* Added a 'scripts/' directory.
+	* Added a database versioning script in
+	'scripts/loudwater_update_db.pl'.
+	* Added an administrator application in 'htdocs/admin.pl'.
+2009-06-03 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/player.html' that was causing the live
+	feed to be restarted at the end of on-demand content playout.
+2009-06-03 Fred Gleason <fredg@paravelsystems.com>
+	* Removed multiple <head> and <body> tags from
+	'htdocs/player.html'.
+	* Added a DOCTYPE header to 'htdocs/player.html'.
+2009-06-03 Fred Gleason <fredg@paravelsystems.com>
+	* Added a '$player_optional_link_code' config variable in
+	'htdocs/player.pl'.
+2009-06-03 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/player.html' that caused the player to
+	display a black screen after finishing playing content.
+2009-06-03 Fred Gleason <fredg@paravelsystems.com>
+	* Updated JWPlayer component 'htdocs/player.swf' to v4.2.90
+	(licensed).
+2009-06-03 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/player.html' that caused the player to
+	display a black screen after pausing the player.
+	* Fixed a bug where the live stream would fail to autostart after
+	playing the splash video.
+2009-06-03 Fred Gleason <fredg@paravelsystems.com>
+	* Refactored the live feed active detection routines in
+	'htdocs/player.html'.
+2009-06-03 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'htdocs/test_player_head.txt'.
+	* Modified 'htdocs/player.html' to insert the contents of
+	<name>_player_head.txt' in the <head> section of the player.
+	* Refactored the configuration values for the side and top banners
+	in 'test_player_config.pl'.
+2009-06-04 Fred Gleason <fredg@paravelsystems.com>
+	* Refactored 'htdocs/player.html' into separate files for markup
+	('htdocs/player.html') and code ('htdocs/player.js').
+	* Removed 'htdocs/modieus.swf'.
+	* Removed 'htdocs/ads.shtml', 'htdocs/banner.shtml',
+	'htdocs/shows.htm'.
+2009-06-04 Fred Gleason <fredg@paravelsystems.com>
+	* Updated 'htdocs/test_player_config.pl'.
+2009-06-04 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.2.0.
+2009-06-04 Fred Gleason <fredg@paravelsystems.com>
+	* Removed the check for CGI::Application from 'configure.in'.
+2009-06-04 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.2.1.
+2009-06-04 Fred Gleason <fredg@paravelsystems.com>
+	* Removed the 'perl-CGI::Session' dependency from
+	'loudwater.spec.in'.
+	* Incremented the package version to 0.2.2.
+2009-06-04 Fred Gleason <fredg@paravelsystems.com>
+	* Switched the 'htdocs/player.swf' version to an earlier version.
+2009-06-04 Fred Gleason <fredg@paravelsystems.com>
+	* Added a random 'sn' parameter in 'htdocs/player.pl'.
+2009-06-04 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.2.3.
+2009-06-05 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/player.js' that broke live stream playout
+	on Linux.
+2009-06-05 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.2.4.
+2009-06-08 Fred Gleason <fredg@paravelsystems.com>
+	* Disabled the fullscreen button in 'htdocs/player.js'.
+	* Refactored the time detection routines in 'htdocs/player.js' and
+	'htdocs/player.pl' to handle weekends correctly.
+	* Added logic to display different player logos according to which
+	live show is playing at a given time in 'htdocs/player.js' and
+	'htdocs/player.pl'.
+2009-06-08 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.2.5.
+2009-06-09 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/player.pl' and 'htdocs/player.html' that
+	broke direct media linking.
+2009-06-10 Fred Gleason <fredg@paravelsystems.com>
+	* Refactored the player Javascript code in 'htdocs/player.js'.
+	* Fixed a bug in 'htdocs/player.js' that caused the transport
+	control buttons to be broken.
+2009-06-10 Fred Gleason <fredg@paravelsystems.com>
+	* Moved the JWPlayer SWFObject instance to global scope in
+	'htdocs/player.js'.
+2009-06-10 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.2.6.
+2009-06-11 Fred Gleason <fredg@paravelsystems.com>
+	* Added a %BUTTON_TABLE% variable for the button section in
+	'htdocs/player.html'.
+	* Added code to generate the button section table in
+	'htdocs/player.pl'.
+2009-06-11 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.2.7.
+2009-06-16 Fred Gleason <fredg@paravelsystems.com>
+	* Added '%LIVE_FLASHVARS%' and '%ONDEMAND_FLASHVARS%' variables in
+	'htdocs/player.pl' and 'htdocs/player.js'.
+2009-06-16 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.2.8.
+2009-06-17 Fred Gleason <fredg@paravelsystems.com>
+	* Upgraded 'htdocs/swfobject.js' to v2.2.
+	* Refactored the 'DemandPlayer()' and 'LivePlayer()' methods in
+	'htdocs/player.js' to work properly with the new version of
+	'swfobject.js'.
+	* Removed 'htdocs/AC_OETags.js'.
+2009-06-18 Fred Gleason <fredg@paravelsystems.com>
+	* Added code in 'htdocs/player.js' to properly handle incorrect
+	local walltime on the client.
+2009-06-18 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'htdocs/andotag.html'.
+	* Added code in 'htdocs/player.pl' to generate the Ando tracking
+	tag dynamically.
+2009-06-18 Fred Gleason <fredg@paravelsystems.com>
+	* Created 'helpers/'.
+	* Added 'helpers/jsmin.c'.
+	* Added a rule in 'loudwater.spec.in' to minify
+	'htdocs/player.js'.
+2009-06-18 Fred Gleason <fredg@paravelsystems.com>
+	* Added code in 'htdocs/player.js' to remove zombie instances of
+	JWPlayer.
+2009-06-18 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'htdocs/expressInstall.swf'.
+	* Added 'htdocs/modieus.swf'.
+	* Fixed a bug in 'htdocs/player.js' that caused incorrect logos to
+	display when the client systems wall clock was incorrectly set.
+2009-06-18 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version 0.2.9.
+2009-06-18 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'src/'.
+	* Added 'src/modieus.fla'.
+	* Shifted the location of the logo in 'src/modieus.fla' and 
+	'htdocs/modieus.swf'.
+2009-06-18 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version 0.2.10.
+2009-06-18 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/player.pl' that was assigning a fixed width
+	to the channel buttons.
+2009-06-19 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version 0.2.11.
+2009-06-23 Fred Gleason <fredg@paravelsystems.com>
+	* Implemented user management in 'htdocs/admin.pl'.
+2009-06-23 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'PLAYERS', 'LIVE_SEGMENTS' and 'CHANNEL_BUTTONS' tables to
+	the database.
+	* Incremented the database version to 3.
+	* Implemented player management in 'htdocs/admin.pl'.
+2009-07-07 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'LIVE_SEGMENTS' and 'CHANNEL_BUTTONS' tables to the
+	database.
+	* Incremented the database version to 5.
+	* Implemented the administrative interface in 'htdocs/admin.pl'.
+	* Refactored 'htdocs/player.pl' to use MySQL instead of static
+	files for configuration data.
+2009-07-07 Fred Gleason <fredg@paravelsystems.com>
+	* Tweaked the title section of the 'Edit Button' dialog in
+	'htdocs/admin.pl'.
+2009-07-07 Fred Gleason <fredg@paravelsystems.com>
+	* Changed the background of the on-demand player window to white
+	in 'htdocs/player.js'.
+2009-07-07 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.5.0.
+2009-07-07 Fred Gleason <fredg@paravelsystems.com>
+	* Removed the 'perl-Date-calc' dependency in 'loudwater.spec.in'.
+2009-07-07 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.5.1.
+2009-07-07 Fred Gleason <fredg@paravelsystems.com>
+	* Added code in 'htdocs/player.js' to stop live playout at the
+	expiration of the live segment period.
+2009-07-10 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'LIVE_SEGMENTS.LIVE_LINK' and 'LIVE_SEGMENTS.LOGO_LINK' to
+	the database.
+	* Incremented the database version to 6.
+	* Added 'htdocs/common.pl'.
+	* Retired the 'PLAYERS.LIVE_LINK', 'PLAYERS.LIVE_DIVIDER_HOUR',
+	'PLAYERS.LIVE_ONDEMAND_LINK', 'PLAYERS.LIVE_LIVE1_LINK',
+	'PLAYERS.LIVE_LIVE2_LINK','PLAYERS.LIVE_INACTIVE_LINK' fields from
+	the database.
+	* Refactored the code in 'htdocs/player.js' to work with the new
+	multi-band segment schema.
+2009-07-10 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/player.js' that broke automatic live feed
+	plyout shutdown.
+2009-07-10 Fred Gleason <fredg@paravelsystems.com>
+	* Refactored the button link code in 'htdocs/player.js' and
+	'htdocs/player.pl'.
+2009-07-20 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/player.js' that caused the audio logo to
+	display during playout of the splash screen.
+	* Added 'htdocs/admin-doc.html'.
+	* Added hyperlinks to relevant help section to
+	'htdocs/admin-doc.html' in 'htdocs/admin.pl'.
+2009-07-20 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed bugs in 'htdocs/player.js' that caused incorrect logos to
+	display during live segment playout.
+2009-07-20 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.6.0.
+2009-07-21 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/player.js' that caused the live logo to
+	be displayed during on-demand content when the feed was active.
+2009-07-21 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.6.1.
+2009-07-27 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'CHANNELS' and 'CHANNEL_PERMS' tables to the database.
+	* Added a 'USERS.MANAGE_CHANNELS_PRIV' field to the database.
+	* Incremented the database version to 7.
+	* Added 'htdocs/admin.js'.
+	* Added a 'Manage Channels' feature in 'htdocs/admin.pl'.
+2009-07-29 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'POSTS' and 'JOBS' tables to the database.
+	* Incremented the database version to 8.
+	* Added 'htdocs/greenball.png', 'htdocs/redball.png' and
+	'htdocs/whiteball.png'.
+	* Added 'htdocs/progressbar.gif'.
+	* Implemented post management in 'htdocs/admin.pl'.
+2009-07-29 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'USERS.MANAGER_SERVERS_PRIV' field to the database.
+	* Added a 'SERVERS' table to the database.
+	* Incremented the database version to 10.
+	* Added 'Manage Server' controls in 'htdocs/admin.pl'.
+2009-07-31 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'LIVE_SEGMENTS.SID' and 'CHANNEL_BUTTONS.SID' fields to
+	the database.
+	* Incremented the database version to 11.
+	* Added 'Ando Station ID' fields to the 'Edit Live Segment' and
+	'Edit Channel Button' screens in 'htdocs/admin.pl'.
+	* Added 'AR_GCC_TARGET()', 'AR_GET_DISTRO()' and 'BNV_HAVE_QT()'
+	macros in 'acinclude.m4'.
+	* Added 'get_target.sh' and 'get_distro.sh'.
+	* Added 'JOBS.HOSTNAME' and 'JOBS.PROCESS_ID' fields to the
+	database.
+	* Incremented the database version to 12.
+	* Added lwpd(8) in 'lwpd/'.
+2009-07-31 Fred Gleason <fredg@paravelsystems.com>
+	* Implemented Ingest in lwpd(8).
+2009-07-31 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'TAPS' table to the database.
+	* Added a 'JOBS.TAP_ID' field to the database.
+	* Incremented the database version to 13.
+2009-08-10 Fred Gleason <fredg@paravelsystems.com>
+	* Implemented tap configuration in 'htdocs/admin.pl',
+	'htdocs/admin.js' and 'htdocs/admin-doc.html'.
+2009-08-14 Fred Gleason <fredg@paravelsystems.com>
+	* Implemented post deletion in 'htdocs/admin.pl', 'lwpd/lwpd.cpp'
+	and 'lwpd/common.h'.
+2009-08-14 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'TAPS.AUDIO_EXTENSION' and 'TAPS.VIDEO_EXTENSION' fields
+	to the database.
+	* Incremented the database version to 14.
+	* Added 'Audio Extension' and 'Video Extension' controls to the
+	Edit Tap' screen in 'htdocs/admin.pl'.
+	* Documented the 'Audio Extension' and 'Video Extension' controls
+	in 'htdocs/admin-doc.html'.
+	* Implemented the encoding stage.
+2009-08-19 Fred Gleason <fredg@paravelsystems.com>
+	* Implemented the distribution stage.
+2009-08-19 Fred Gleason <fredg@paravelsystems.com>
+	* Removed the 'POSTS.JOB_STATUS' field from the database.
+	* Added 'POSTS.PROCESSING' and 'POSTS.DELETING' fields to the
+	database.
+	* Incremented the database version to 15.
+	* Refactored post summary status indications.
+2009-08-19 Fred Gleason <fredg@paravelsystems.com>
+	* Added a playlist generator in 'htdocs/feed.pl'.
+2009-08-24 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'PARTS' table to the database.
+	* Added a 'TAPS.DOWNLOAD_MIMETYPE' field to the database.
+	* Incremented the database version to 17.
+2009-08-26 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'htdocs/version.pl.in'.
+2009-09-08 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'PARTS.CONTENT_TYPE' field to the database.
+	* Incremented the database version to 18.
+	* Added an 'ffmpeg' depdency in 'loudwater.spec.in'.
+	* Implemented video posting in lwpd(8).
+2009-09-08 Fred Gleason <fredg@paravelsystems.com>
+	* Removed logging of canonical name in 'lwpd/lwconfig.cpp'.
+2009-09-08 Fred Gleason <fredg@paravelsystems.com>
+	* Implemented an upload progress bar in 'htdocs/admin.pl'.
+2009-09-09 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/feed.pl' that caused duplicate ITEM
+	sections to appear in the output.
+2009-09-09 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/admin.pl' that threw a CGI error when
+	closing an empty jobs listing.
+2009-09-09 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'lwpd/lwpd.cpp' that caused deletion of stuck
+	jobs to fail.
+2009-09-09 Fred Gleason <fredg@paravelsystems.com>
+	* Added support for DV format for uploaded files in
+	'lwpd/lwingest.cpp'.
+2009-09-09 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/admin.pl' that caused taps to be created
+	with invalid ORIGIN_DATETIME values.
+	* Added a POSTS.COMMENTS' field to the database.
+	* Incremented the database version to 19.
+	* Added an 'Comments' control to the Edit Post screen in
+	'htdocs/admin.pl'.
+2009-09-09 Fred Gleason <fredg@paravelsystems.com>
+	* Added an init script in 'rc.lwpd.in'.
+	* Added a 'htdocs/feed.xml' symlink to 'htdocs/feed.pl'.
+2009-09-14 Fred Gleason <fredg@paravelsystems.com>
+	* Implemented 'Restart' and 'Delete' buttons in the View Jobs
+	screen in 'htdocs/admin.pl'.
+2009-09-14 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'JOBS.ERROR_TEXT' field to the database.
+	* Updated the database version to 20.
+	* Added a 'GetErrorText()' function in 'lwpd/common.cpp' and
+	'lwpd/common.h'.
+2009-09-14 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'JOB_STATE_DISTRIBUTION_ERROR' code in 'htdocs/admin.pl'
+	and 'lwpd/common.h'.
+2009-09-14 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'CHANNELS.ALLOW_MULTIPART_POSTS' field to the database.
+2009-09-14 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'TAPS.DELETING' field to the database.
+	* Incremented the database version to 22.
+2009-09-17 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'TAPS.AUDIO_MEMETYPE' and 'TAPS.VIDEO_MIMETYPE' fields to
+	the database.
+	* Incremented the database version to 23.
+	* Added 'Audio Mimetype:' and 'Video Mimetype:' controls to the
+	'Edit Tap' screen in 'htdocs/admin.pl'.
+	* Added a 'ITEM_CONTENT_MIMETYPE' XML wildcard in
+	'htdocs/feed.pl'.
+2009-09-21 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'THUMBNAILS' table to the database.
+	* Added 'CHANNELS.THUMBNAIL_UPLOAD_URL',
+	'CHANNELS.THUMBNAIL_UPLOAD_USERNAME',
+	'CHANNELS.THUMBNAIL_UPLOAD_PASSWORD',
+	'CHANNELS.THUMBNAIL_DOWNLOAD_URL', and 'POSTS.THUMBNAIL_ID' fields
+	to the database.
+	* Incremented the database version to 24.
+	* Added a 'UPLOADS.DOWNLOAD_URL' field to the database.
+	* Incremented the database version to 25.
+	* Fixed a bug in 'lwpd/lwdistribute.cpp' that was failing to
+	generate the download URL value.
+2009-09-22 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'JOB_STATE_MISSING_ENCODER_ERROR' job state in
+	'htdocs/admin.pl' and /lwpd/common.h'.
+	* Fixed a bug in 'lwpd/lwencode.cpp' that caused a deadlock when
+	attempting to execute a tap with a blank encoder command.
+2009-09-22 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/admin.pl' that caused a post's status to
+	be falsely displayed as 'Deleting'.
+2009-09-22 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/admin.pl' in the 'Edit Post' screen that
+	caused the 'Post Active' control to always indicate 'No'.
+2009-09-28 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'TAPS.FOOTER_XML' field to the database.
+	* Incremented the database version to 26.
+	* Added a 'Footer XML' control in 'htdocs/admin.pl'.
+2009-09-29 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed bug in 'htdocs/admin.pl' and 'htdocs/admin.js' that caused
+	settings to fail to be preserved when in sub-dialog screens.
+2009-10-13 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'Thumbnail Upload URL, 'Thumbnail Upload Username',
+	'Thumbnail Upload Password' and 'Thumbnail Download URL' controls
+	to the 'Edit Channel' screen in 'htdocs/admin.pl'.
+	* Added a 'CHANNELS.THUMBNAIL_ID' field to the database.
+	* Incremented the database version to 27.
+2009-10-16 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'THUMBNAILS.FILENAME' field to the database.
+	* Removed the 'THUMBNAILS.URL' field from the database.
+	* Incremented the database version to 28.
+	* Implemented thumbnail management.
+2009-10-16 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'CHANNELS.AUTHOR', 'CHANNELS.OWNER', 'CHANNELS.OWNER_EMAIL',
+	'CHANNELS.SUBTITLE', 'CHANNELS.SUBTITLE',
+	'CHANNELS.CATEGORY_ITUNES', 'CHANNELS.KEYWORDS',
+	'CHANNELS.EXPLICIT', 'POSTS.AUTHOR', 'POSTS.KEYWORDS',
+	'POSTS.SHORT_DESCRIPTION', POSTS.EXPLICIT' to the database.
+	* Incremented the database version to 29.
+2009-10-16 Fred Gleason <fredg@paravelsystems.com>
+	* Altered the 'Edit Post' screen in 'htdocs/admin.pl' to offer a
+	button for choosing a thumbnail image when no image is currently
+	assigned.
+2009-10-19 Fred Gleason <fredg@paravelsystems.com>
+	* Added an 'EXAMPLE_XML' table to the database.
+	* Incremented the database version to 30.
+	* Added an 'RSS 2.0' exemplar tap.
+2009-10-19 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'RSS 2.0 + iTunes', 'Modeius' and 'Mrss' exemplars in
+	'scripts/loudwater_update_db.pl'.
+	* Added logic in 'htdocs/admin.pl' to default the item values for
+	'Description' and 'Short Description' to the date of the post.
+2009-10-19 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/admin.pl' that cause the settings of the
+	'Explicit Tag' and 'Post Active' controls to fail to be preserved
+	when setting a new thumbnail image.
+	* Fixed bugs in 'htdocs/admin.pl' that caused settings to be lost
+	when choosing a default thumbnail image in the 'Edit Channel'
+	screen.
+2009-10-22 Fred Gleason <fredg@paravelsystems.com>
+	* Added support for ingesting FLV files in 'lwpd/lwingest.cpp'.
+2009-10-23 Fred Gleason <fredg@paravelsystems.com>
+	* Commented out metadata detection code in 'htdocs/player.js' and
+	'htdocs/player.html'.
+2009-10-23 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/player.js' that caused a direct-linked
+	playout to display am empty playlist after completing.
+2009-10-26 Fred Gleason <fredg@paravelsystems.com>
+	* Added a screen to display direct link URLs in 'htdocs/admin.pl'.
+	* Added an 'uploads=' parameter to the player script in
+	'htdocs/player.pl'.
+2009-10-29 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.0.
+2009-10-29 Fred Gleason <fredg@paravelsystems.com>
+	* Changed the RPM architecture type from 'noarch' to the build
+	machine type.
+2009-10-29 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.1.
+2009-10-29 Fred Gleason <fredg@paravelsystems.com>
+	* Added lwpd(8) to 'loudwater.spec.in'.
+2009-10-29 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.2.
+2009-11-03 Fred Gleason <fredg@paravelsystems.com>
+	* Added the cache directories to 'loudwater.spec.in'.
+2009-11-03 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.3.
+2009-11-03 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'loudwater.spec.in' that caused the '--prefix='
+	switch to be ignored.
+2009-11-03 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.4.
+2009-11-03 Fred Gleason <fredg@paravelsystems.com>
+	* Added lwingest(8), lwencode(8), lwdistribute(8) and
+	lwmaintain(8) in 'loudwater.spec.in'.
+2009-11-03 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.5.
+2009-11-05 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'CHANNEL_BUTTONS.MODE' field to the database.
+	* Incremented the database version to 32.
+	* Added a 'Button Mode' control to the Edit Button screen in
+	'htdocs/admin.pl'.
+2009-11-05 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.6.
+2009-11-10 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/admin.js' that caused field entries to be
+	corrupted when executing a sub-screen.
+2009-11-05 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.7.
+2009-11-16 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'POSTS.AIR_DATE', 'POSTS.AIR_HOUR' and
+	'POSTS.LAST_MODIFIED_DATETIME' field to the database.
+	* Incremented the database version to 33.
+2009-11-16 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'TAPS.VISIBILITY_WINDOW' field to the database.
+	* Incremented the database version to 34.
+2009-11-17 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.8.
+2009-11-19 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/feed.pl' that broke feed rendering when
+	the LAST_MODIFIED_DATETIME field was null.
+2009-11-19 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.9.
+2009-11-20 Fred Gleason <fredg@paravelsystems.com>
+	* Added a RunSpot proxy script in 'htdocs/runspot.pl'.
+	* Added a test form for the RunSpot proxy in
+	'htdocs/runspot.html'.
+	* Moved common utility routines from 'htdocs/admin.js' to
+	'htdocs/utils.js'.
+	* Fixed a bug in 'htdocs/player.js' that caused a logo to be
+	displayed when playing gateway ads.
+2009-11-23 Fred Gleason <fredg@paravelsystems.com>
+	* Removed static RunSpot service code from 'htdocs/player.pl'.
+2009-11-23 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'topBannerlURL' and 'sideBannerURL' properties to the
+	'AndoSpot' class in 'htdocs/runspot.js'.
+	* Implemented synched banners for gateway spots in
+	'htdocs/player.js'.
+2009-11-23 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'PLAYERS.USE_SYNCHED_BANNERS' field to the database.
+	* Incremented the database version to 35.
+	* Added a 'Use Synched Banners' control to the 'Edit Player'
+	screen in 'htdocs/admin.pl'.
+2009-11-23 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.10.
+2009-11-23 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/runspot.js' that caused an abend when
+	processing a return containing a null banner entry.
+	* Fixed a bug in 'htdocs/player.pl' that caused the player to fail
+	to start when the 'Top Banner Link' or 'Side Banner Link' fields
+	contained newlines.
+2009-11-23 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.11.
+2009-11-23 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'loudwater.spec.in' that caused the 'make rpm'
+	target to ignore the '--libexecdir=' switch.
+2009-11-23 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.12.
+2009-11-24 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/player.pl' that caused the player to fail
+	to load when the HEAD_CODE was empty.
+2009-11-24 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.13.
+2009-11-24 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/common.pl' that caused the timezone part
+	of RFC822 formatted timestamps to be omitted.
+2009-11-24 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/common.pl' that caused the
+	%ITEM_LAST_MODIFIED_DATETIME% parameter to always evaluate to
+	NULL.
+2009-11-24 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/feed.pl' that caused a truncated output
+	when generating a tap with missing uploads.
+2009-11-24 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.14.
+2009-11-24 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'Links' button to the List Channel Content screen.
+2009-11-24 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.15.
+2009-12-08 Fred Gleason <fredg@paravelsystems.com>
+	* Implemented code to escape '&', '"', ''', '<' and '>' characters
+	in metadata string values in 'htdocs/feed.pl' and
+	'htdocs/common.pl'.
+	* Cleaned up warnings in 'htdocs/common.pl', 'htdocs/feed.pl',
+	'htdocs/player.pl', and 'htdocs/admin.pl'.
+2009-12-08 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.16.
+2009-12-18 Fred Gleason <fredg@paravelsystems.com>
+	* Optimized the SQL queries in 'htdocs/admin.pl',
+	'lwpd/lwencode.cpp', 'lwpd/lwpd.cpp' and 
+	'scripts/loudwater_update_db.pl'.
+	* Incremented the database version to 36.
+2009-12-28 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/common.pl' that threw warnings when 
+	trying to evaluate a NULL 'PUBLISHED_DATETIME'.
+2009-12-28 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/common.pl' that truncated trailing '00'
+	fields in time length values.
+2009-12-28 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.17.
+2009-12-28 Fred Gleason <fredg@paravelsystems.com>
+	* Added a TAPS.VALIDATION_URL' field to the database.
+	* Incremented the database version to 37.
+	* Removed debugging statements in 'lwpd/lwencode.cpp'.
+	* Added a Validation button to the Tap Links screen in
+	'htdocs/admin.pl'.
+2009-12-28 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.18.
+2009-12-28 Fred Gleason <fredg@paravelsystems.com>
+	* Added a '%TAP_URL%' wildcard in 'htdocs/feed.pl'.
+2009-12-28 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.19.
+2010-01-13 Fred Gleason <fredg@paravelsystems.com>
+	* Implemented the DOWNLOAD_PREAMBLE parameter in 'htdocs/feed.pl'.
+2010-01-13 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'lwpd/lwmaintainer.cpp' where trying to delete
+	a post where the media file was missing on the server where result
+	in an endless round of retries.
+2010-01-13 Fred Gleason <fredg@paravelsystems.com>
+	* Duplicated 'Add Post' and 'Close' buttons at the top of the
+	'List Posts' page in 'htdocs/admin.pl'.
+2010-01-13 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.20.
+2010-01-13 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a regression in 'htdocs/feed.pl' that broke thumbnail
+	images.
+2010-01-13 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.21.
+2010-07-19 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'scripts/loudwater_update_db.pl' that broke
+	initial administrator login when creating a new database.
+2010-07-19 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'PLAYERS.BGCOLOR' field to the database.
+	* Incremented the database verison to 38.
+	* Added a '%BGCOLOR%' html variable in 'htdocs/player.pl' and
+	'htdocs/player.html'.
+	* Added a 'Background Color' control to the 'Edit Player' screen
+	in 'htdocs/admin.pl'.
+2010-07-19 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'PLAYERS.PLAYER_FGCOLOR' field to the database.
+	* Added a 'PLAYERS.PLAYER_BGCOLOR' field to the database.
+	* Incremented the database verison to 39.
+	* Added a '%PLAYLIST_FGCOLOR%', '%PLAYLIST_BGCOLOR%' and 
+	'%PLAYLIST_HGCOLOR%' html variables in 'htdocs/player.pl' and
+	'htdocs/player.html'.
+	* Added 'Playlist Background Color' and 'Playlist Text Color'
+	controls to the 'Edit Player' screen in 'htdocs/admin.pl'.
+2010-07-20 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'PLAYERS.BASE_BRANDING_LINK' field to the database.
+	* Incremented the database verison to 40.
+	* Added a 'Custom Branding Link' control to the 'Edit Player' screen
+	in 'htdocs/admin.pl'.
+2010-07-20 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.22.
+2010-07-20 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'PLAYERS.PLAYLIST_SGCOLOR' field to the database.
+	* Incremented the database verison to 41.
+	* Added a '%PLAYLIST_SGCOLOR%' html variable in 'htdocs/player.pl' and
+	'htdocs/player.html'.
+	* Added a 'Screen Background Color' control to the 'Edit Player' screen
+	in 'htdocs/admin.pl'.
+2010-07-20 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.23.
+2010-07-23 Fred Gleason <fredg@paravelsystems.com>
+	* Added code in 'htdocs/player.js' to disable navigation buttons
+	while playing the splash or gateway videos.
+2010-07-23 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.7.24.
+2010-09-03 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'CHANNEL_BUTTONS.CURRENT_TITLE',
+	'CHANNEL_BUTTONS.CURRENT_DESCRIPTION',
+	'CHANNEL_BUTTONS.CURRENT_ENCLOSURE_URL' and
+	'CHANNEL_BUTTONS.LAST_UPDATE' fields to the database.
+	* Incremented the database version to 43.
+	* Added lwsync(8) in 'lwpd/lwsync.cpp' and 'lwpd/lwsync.h'.
+	* Added 'PLAYERS.BANNER_VIMAGE_URL',
+	'PLAYERS.BANNER_VIMAGE_HEIGHT', 'PLAYERS.BANNER_HIMAGE_URL' and
+	'PLAYERS.BANNER_HIMAGE_WIDTH' fields to the database.
+	* Incremented the database version to 44.
+	* Added a 'BANNERS' section to the Edit Players screen in
+	'htdocs/admin.pl'.
+2010-09-03 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.8.0.
+2010-09-03 Fred Gleason <fredg@paravelsystems.com>
+	* Removed 'htdocs/banner.css'.
+	* Added 'htdocs/banner.pl' and 'htdocs/banner.js' in
+	'loudwater.spec.in'.
+2010-09-03 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.8.1.
+2010-09-07 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'lwpd/lwsync.cpp' that caused a segfault when
+	processing malformed feed data.
+2010-09-07 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.8.2.
+2010-09-07 Fred Gleason <fredg@paravelsystems.com>
+	* Added code in 'lwpd/lwsync.cpp' to cause lwsync(8) to sync feeds
+	regardless of last datetamp when running with the '--force'
+	switch.
+	* Disabled automatic resyncing of malformed feed URLs in
+	'lwpd/lwsync.cpp'.
+2010-09-07 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.8.3.
+2010-09-07 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'lwpd/lwsync.cpp' that caused an endless loop of
+	failed syncing attempts when getting malformed feed data.
+2010-09-07 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.8.4.
+2010-09-07 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'lwpd/lwsync.cpp' that caused an endless loop of
+	failed syncing attempts when using an invalid source URL.
+2010-09-07 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.8.5.
+2010-09-07 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'lwpd/lwsync.cpp' that caused an endless loop of 
+	failed syncing attempts when using a null source URL.
+2010-09-07 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.8.6.
+2010-09-08 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'lwpd/lwpd.cpp' that caused the bucket brigade to
+	deadlock after starting the initial jobs.
+2010-09-08 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.8.7.
+2010-09-16 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/banner.pl' and 'htdocs/banner.js' that
+	broke branding support when clicking through a banner.
+2010-09-16 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.8.8.
+2010-09-17 Fred Gleason <fredg@paravelsystems.com>
+	* Adjusted the vertical size of the player popup when invoked from
+	a banner from 725 to 735 pixels.
+2010-09-17 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.8.9.
+2010-09-20 Fred Gleason <fredg@paravelsystems.com>
+	* Added an 'ACCESS_LOG' table to the database.
+	* Incremented the database version to 45.
+	* Added code in 'htdocs/player.pl' and 'htdocs/feed.pl' to log
+	resource accesses.
+	* Added 'htdocs/track.pl'.
+	* Modified 'htdocs/feed.pl' to route enclosure URLs through the
+	'track.pl script.
+2010-09-20 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.9.0.
+2010-09-21 Fred Gleason <fredg@paravelsystems.com>
+	* Added '.mp3' and ',flv' extensions to cgi-handler types in
+	'loudwater.conf.in'.
+	* Reverted 'htdocs/feed.pl' to route enclosure URLs directly to
+	target media.
+2010-09-21 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.9.1.
+2010-09-21 Fred Gleason <fredg@paravelsystems.com>
+	* Removed debug 'alert' statement from 'htdocs/player.js'.
+2010-09-21 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.9.2.
+2010-10-05 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'Listen Now' link to the channel banners in
+	'htdocs/vbanner.html' and 'htdocs/hbanner.html'.
+	* Added a play button in 'htdocs/play.png'.
+2010-10-05 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/admin.pl' that incorrectly parsed the
+	extension of an uploaded media file.
+2010-10-05 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.9.3.
+2010-10-06 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'htdocs/play-base.png', 'htdocs/hplay.png' and
+	'htdocs/vplay.png'.
+	* Modified the channel banners to include a play button graphic.
+2010-10-06 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.9.4.
+2010-10-08 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'section=parts' argument to the 'htdocs/banner.pl'
+	script.
+2010-10-08 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.9.5.
+2010-10-28 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/vbanner.html' and 'htdocs/hbanner.html'
+	where the player would not be spawned if the user clicked on the
+	'Listen Now' link.
+2010-10-28 Fred Gleason <fredg@paravelsystems.com>
+	* Added the the banner logos to those elements that are overloaded
+	by player branding.
+2010-10-28 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.9.6.
+2010-11-29 Fred Gleason <fredg@paravelsystems.com>
+	* Implemented 'height' and 'width' arguments to the Banner system
+	in 'htdocs/banner.pl'.
+	* Refactored banners to use a background image from branding.
+	* Changed the branding banners to use PNG instead of JPEG image
+	data.
+2010-12-16 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/vbanner.html' and 'htdocs/hbanner.html'
+	that caused text area backgrounds to show black in transparent
+	areas.
+2010-12-16 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.9.7.
+2011-02-22 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/banner.pl' that caused banner logos to be
+	incorrectly scaled when used with non-standard sizes.
+2011-02-22 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.9.8.
+2011-02-22 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/vbanner.html' and 'htdocs/hbanner.html'
+	that caused background images to wrap.
+2011-02-22 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.9.9.
+2011-05-25 Fred Gleason <fredg@paravelsystems.com>
+	* Removed the call to the 'AX_WITH_PERL' macro in 'configure.in'.
+	* Added a conditional compile in 'lwpd/lwmaintain.cpp'.
+2011-05-26 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/banner.pl' that caused 'http:' and 'https:'
+	image sources to be intermixed when used in a dual http/https
+	setup.
+2011-05-26 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.9.10.
+2011-07-05 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/banner.js' and 'htdocs/banner.pl' that
+	caused the player link to be be invoked with a 'https' protocol
+	when accessed via https.
+2011-07-05 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.9.11.
+2011-09-29 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'PLAYERS.LAYOUT' field to the database.
+	* Incremented the database version to 46.
+	* Added '%PLAYER_WIDTH%', '%PLAYER_HEIGHT%' and
+	'%PLAYER_DISPLAYHEIGHT%' player variables in 'htdocs/player.pl'.
+	* Added a 'Layout' control to the 'Edit Player' screen in
+	'htdocs/admin.pl'.
+2011-09-29 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.9.12.
+2011-10-06 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'htdocs/player-sparse.html'.
+	* Added a 'style=sparse' arguement to 'player.pl' to invoke a
+	player without banners.
+2011-10-06 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.9.13.
+2011-10-06 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'htdocs/player-sparse.html' to 'loudwater.spec.in'.
+2011-10-06 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.9.14.
+2011-11-21 Fred Gleason <fredg@paravelsystems.com>
+	* Reduced the width of the 'sparse' player to fit onto a
+	1024-pixel widge screen.
+2011-11-21 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.9.15.
+2011-11-23 Fred Gleason <fredg@paravelsystems.com>
+	* Adjusted the size of the player popup dialog in
+	'htdocs/banner.js' to render correctly on Safari.
+2011-11-23 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/player.js' that caused a null player
+	screen to be displayed when pausing or completing a
+	directly-linked playout.
+2011-11-23 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.9.16.
+2011-11-30 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/player.hs' that caused the channel to
+	switch to that associated with the second button at the end of
+	an event playout.
+2011-11-30 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'CHANNEL_BUTTONS.ACTIVE_IMAGE_LINK' field to the
+	database.
+	* Incremented the database version to 47.
+	* Added a column for active button images to the List Button
+	screen in 'htdocs/admin.pl'.
+	* Added an 'Active Image URL' control to the Edit Button screen
+	in 'htdocs/admin.pl'.
+	* Added functionality in 'htdocs/player.js' and 'htdocs/player.pl'
+	for showing active button images.
+2011-11-30 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.9.17.
+2011-12-09 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'button=<n>' URL arugment to 'htdocs/player.pl'.
+	* Added a 'PLAYERS.SOCIAL_TEST' field to the database.
+	* Added a 'PLAYERS.SOCIAL_FACEBOOK' field to the database.
+	* Added a 'REMAPS' table to the database.
+	* Added a 'PLAYLIST_METADATA' table to the database.
+	* Added a 'PLAYERS.SOCIAL_FACEBOOK_ADMIN' field to the database.
+	* Incremented the database version to 48.
+	* Added a 'SOCIAL TEST' control to the Edit Player screen in
+	'htdocs/admin.pl'.
+	* Added a 'SOCIAL FACEBOOK' control to the Edit Player screen in
+	'htdocs/admin.pl'.
+	* Added a 'SOCIAL FACEBOOK ADMINISTRATOR' control to the Edit
+	Player screen in 'htdocs/admin.pl'.
+	* Added an icon for the 'test' social media service in
+	'htdocs/social_test.png'.
+	* Added a remapping script in 'htdocs/remap.pl.
+	* Modified the configure script values in 'INSTALL'.
+2011-12-15 Fred Gleason <fredg@paravelsystems.com>
+	* Documented the logfile format in 'docs/log_format.txt'
+	* Modified 'htdocs/player.pl' to log access directly to files.
+	* Modified 'htdocs/feed.pl' to log access directly to files.
+	* Modified 'htdocs/track.pl' to log access directly to files.
+	* Fixed a bug in 'htdocs/banner.pl' that caused a single download
+	access to be logged twice.
+	* Reverted 'htdocs/feed.pl' to use the 'track.pl' script to serve
+	media downloads.
+2011-12-15 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'scripts/loudwater_migrate_logs.pl'.
+2011-12-15 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'loudwater_stats_conf-sample.pl'.
+2011-12-16 Fred Gleason <fredg@paravelsystems.com>
+	* Stubbed out a statistics package in 'stats/'.
+2011-12-16 Fred Gleason <fredg@paravelsystems.com>
+	* Added toolkit routines for loading access log records and
+	managing the DNS cache in 'stats/'.
+2011-12-22 Fred Gleason <fredg@paravelsystems.com>
+	* Removed dependency for 'perl-Net-DNS' from loudwater.spec.in'.
+2012-01-04 Fred Gleason <fredg@paravelsystems.com>
+	* Added Client report generation script in
+	'stats/loudwater_stats_client_report.pl'.
+	* Added icons in 'icons/'.
+2012-01-04 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'stats' subpackage in 'loudwater.spec.in'.
+2012-01-04 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/feed.pl' that caused incorrect	download
+	links to be generated.
+2012-01-05 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/common.pl' that caused logfiles to be
+	generated with incorrect names.
+2012-01-16 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/admin.pl' that broke editing of Live
+	Segment information on the Edit Player screen.
+2012-01-16 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/utils.js' and 'htdocs/runspot.js' that
+	broke Ando spot insertion.
+2012-01-16 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a spelling type in 'htdocs/admin.pl'.
+2012-01-16 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'PLAYERS.PLAYLIST_POSITION' field to the database.
+	* Incremented the database version to 49.
+	* Added a 'Playlist Position' control on the Edit Player screen in
+	'htdocs/admin.pl'.
+2012-01-19 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a typo in the 'perl-Text-CSV_XS' dependency listing in
+	'loudwater.spec'in'.
+2012-01-19 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.10.0.
+2012-01-20 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed installation path recommendations in 'INSTALL'.
+2012-01-20 Fred Gleason <fredg@paravelsystems.com>
+	* Added an 'uninstall' target in 'htdocs/Makefile.am'.
+	* Fixed a bug in 'loudwater.conf.in' that broke link remapping.
+	* Fixed incorrect web component install paths in
+	'loudwater.spec.in'.
+2012-01-20 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package versioon to 0.10.1.
+2012-01-20 Fred Gleason <fredg@paravelsystems.com>
+	* Reverted enclosure link generation code in 'htdocs/feed.pl' to
+	use static rather than dynamic linking.
+2012-01-20 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package versioon to 0.10.2.
+2012-04-10 Fred Gleason <fredg@paravelsystems.com>
+	* Modified 'htdocs/player-sparse.html' to use %BGCOLOR% for the
+	overall page background color.
+2012-04-10 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.10.3.
+2012-04-10 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'loudwater.conf.in' that referenced an
+	incorrect location for 'remap.pl'.
+	* Added code in 'htdocs/remap.pl' to allow 'crossdomain.xml' to
+	be served from the root of the web site.
+2012-04-10 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.10.4.
+2012-04-10 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/remap.pl' that handled crossdomain
+	redirects incorrectly.
+	* Added a 'PLAYERS.SOCIAL_DISPLAY_LINK' field to the database.
+	* Incremented the database version to 50.
+	* Added a 'Display Episode Links' control to the Edit Player
+	screen in 'htdocs/admin.pl'.
+2012-04-10 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.10.5.
+2012-04-24 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'TAPS.IS_TRANSPARENT' field to the database.
+	* Incremented the database schema to 51.
+	* Added a 'Transparency Mode' control to the 'Edit Tap' screen
+	in 'htdocs/admin.pl'.
+	* Implemented transparency mode in 'lwpd/lwingest.cpp'.
+2012-04-25 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.10.6.
+2014-05-09 Fred Gleason <fredg@paravelsystems.com>
+	* Documented build parameters for CentOS 6 in 'INSTALL'.
+	* Added an include for the 'studio.h' header in 'lwpd/cmdswitch.cpp'.
+	* Added support for silnet rules in 'configure.in'.
+2014-05-09 Fred Gleason <fredg@paravelsystems.com>
+	* Cleaned up warnings in 'lwpd/lwsync.cpp' and 'lwpd/lwpd.cpp'.
+2014-05-09 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.10.7.
+2014-05-14 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed the installation path in 'images/Makefile.am' so the
+	'make install' rule would work.
+	* Changed the 'apache2' dependency to 'httpd' in 'loudwater.spec.in'.
+2014-05-14 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.10.8.
+2014-05-14 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'perl-HTML-Parser' dependency in 'loudwater.spec.in'.
+2014-05-14 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.10.9.
+2014-05-30 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'sox' dependency in 'loudwater.spec.in'.
+2014-05-30 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/admin.pl' that broke display of the
+	channel mode in the Edit Button screen.
+2014-05-30 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.10.10.

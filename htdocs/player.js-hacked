@@ -1,0 +1,386 @@
+//
+// Loudwater Audio Player
+// 
+//  (C) Copyright 2009 Fred Gleason <fredg@paravelsystems.com>
+//
+var player=null;
+var stop_playout_handle=null;
+var StateInit=0;
+var StateIdle=1;
+var StateSplash=2;
+var StateGateway=3;
+var StateLive=4;
+var StateOnDemand=5;
+var play_state=StateInit;
+var date_offset=0;
+var start_hours=new Array(7);
+for(var i=0;i<7;i++) {
+  start_hours[i]=new Array;
+}
+%START_HOURS_0%
+%START_HOURS_1%
+%START_HOURS_2%
+%START_HOURS_3%
+%START_HOURS_4%
+%START_HOURS_5%
+%START_HOURS_6%
+
+var start_lengths=new Array(7);
+for(var i=0;i<7;i++) {
+  start_lengths[i]=new Array;
+}
+%START_LENGTHS_0%
+%START_LENGTHS_1%
+%START_LENGTHS_2%
+%START_LENGTHS_3%
+%START_LENGTHS_4%
+%START_LENGTHS_5%
+%START_LENGTHS_6%
+
+var live_links=new Array(7);
+for(var i=0;i<7;i++) {
+  live_links[i]=new Array;
+}
+%LIVE_LINKS_0%
+%LIVE_LINKS_1%
+%LIVE_LINKS_2%
+%LIVE_LINKS_3%
+%LIVE_LINKS_4%
+%LIVE_LINKS_5%
+%LIVE_LINKS_6%
+
+var live_logos=new Array(7);
+for(var i=0;i<7;i++) {
+  live_logos[i]=new Array;
+}
+%LIVE_LOGOS_0%
+%LIVE_LOGOS_1%
+%LIVE_LOGOS_2%
+%LIVE_LOGOS_3%
+%LIVE_LOGOS_4%
+%LIVE_LOGOS_5%
+%LIVE_LOGOS_6%
+
+var live_sids=new Array;
+for(var i=0;i<7;i++) {
+  live_sids[i]=new Array;
+}
+%LIVE_SIDS_0%
+%LIVE_SIDS_1%
+%LIVE_SIDS_2%
+%LIVE_SIDS_3%
+%LIVE_SIDS_4%
+%LIVE_SIDS_5%
+%LIVE_SIDS_6%
+
+var ondemand_button_links=new Array;
+%ONDEMAND_BUTTON_LINKS%
+
+var channel_sids=new Array;
+%CHANNEL_SIDS%
+
+//
+// Class Definitions
+//
+  function LiveSegment(start_hour,run_length,live_link,live_logo,remaining,
+		       sid) {
+  this.startHour=start_hour;
+  this.runLength=run_length;
+  this.liveLink=live_link;
+  this.liveLogo=live_logo;
+  this,timeRemaining=remaining;
+  this.stationId=sid;
+}
+
+
+//
+// Player Callbacks
+//
+function playerLoaded(obj) {
+  player=obj.ref;
+}
+
+function playerReady(obj) { 
+  addListeners();
+}
+
+function addListeners() {
+  if (player) { 
+    player.addModelListener("STATE", "stateListener");
+  } 
+  else {
+    setTimeout("addListeners()",100);
+  }
+}
+
+function stateListener(obj) {
+  if(obj.newstate=="COMPLETED") {
+    switch(play_state) {
+    case StateInit:
+    case StateIdle:
+    case StateLive:
+    case StateOnDemand:
+      break;
+
+    case StateSplash:
+      play_state=StateGateway;
+      LoudwaterPlayer('%GATEWAY_LINK%',true,true);
+      break;
+
+    case StateGateway:
+      if('%URL_LINK%'=='') {
+	if('%YOUTUBE_LINK%'=='') {
+	  StartLiveFeed();
+	}
+	else {
+	  YouTubePlayer('%YOUTUBE_LINK%',true);
+	}
+      }
+      else {
+	play_state=StateOnDemand;
+	LoudwaterPlayer('%URL_LINK%',true,true);
+      }
+      break;
+    }
+  }
+}
+
+function stopPlayout() {
+  var seg=GetActiveSegment();
+  if(seg==null) {
+    play_state=StateOnDemand;
+    LoudwaterPlayer('%DEFAULT_LINK%',false,true);
+  }
+  else {
+    setTimeout('stopPlayout()', seg.timeRemaining);
+  }
+}
+
+//
+// Player Entry Points
+//
+function StartPlayer() {
+  //
+  // Initiliaze the date offset
+  //
+  var now=new Date();
+  date_offset=%CURRENT_TIME%-now.getTime();
+
+  if('%SPLASH_LINK%'.length==0) {
+    if('%GATEWAY_LINK%'.length==0) {
+      if('%URL_LINK%'=='') {
+	StartLiveFeed();
+      }
+      else {
+	play_state=StateOnDemand;
+	if('%YOUTUBE_LINK%'.length==0) {
+	    LoudwaterPlayer('%URL_LINK%',true,true);
+	}
+	else {
+	  YouTubePlayer('%YOUTUBE_LINK%',true);
+	}
+      }
+    }
+    else {
+      play_state=StateGateway;
+      LoudwaterPlayer('%GATEWAY_LINK%',true,true);
+    }
+  }
+  else {
+    play_state=StateSplash;
+    LoudwaterPlayer('%SPLASH_LINK%',true,true);
+  }
+}
+
+function PlayButton(num) {
+  if(num==0) {
+    StartLiveFeed();
+    return;
+  }
+  SetAndoId(channel_sids[num]);
+  LoudwaterPlayer(ondemand_button_links[num],false,true);
+}
+
+function StartLiveFeed() {
+  var seg=GetActiveSegment();
+  if(seg!=null) {
+    play_state=StateLive;
+    LoudwaterPlayer(seg.liveLink,true,false);
+    SetAndoId(seg.stationId);
+    setTimeout('stopPlayout()', seg.timeRemaining);
+  }
+  else {
+    play_state=StateOnDemand;
+    LoudwaterPlayer('%DEFAULT_LINK%',false,true);
+    SetAndoId(channel_sids[0]);
+  }    
+}
+
+//
+// Utility Methods
+//
+function SetAndoId(sid) {
+  var e=document.getElementById('pinger');
+  if(e!=null) {
+    e.src='http://30.wcmcs.net/m/fc.aspx?sid='+sid;
+  }
+}
+
+function GetActiveSegment()
+{
+  var now=new Date();
+  var start_time=new Date();
+  var end_time=new Date();
+  var dow;
+
+  now=GetCurrentTime();
+  dow=now.getUTCDay();
+  start_time=GetCurrentTime();
+  end_time=GetCurrentTime();
+  start_time.setUTCMinutes(0);
+  start_time.setUTCSeconds(0,0);
+  for(var i=0;i<start_hours[dow].length;i++) {
+    start_time.setUTCHours(start_hours[dow][i]);
+    end_time.setTime(start_time.getTime()+1000*start_lengths[dow][i]);
+    if((now>=start_time)&&(now<end_time)) {
+      var seg=new LiveSegment(start_hours[dow][i],start_lengths[dow][i],
+			      live_links[dow][i],live_logos[dow][i],
+			      end_time.valueOf()-now.valueOf(),
+			      live_sids[dow][i]);
+      return seg;
+    }
+  }
+  return null;
+}
+
+function GetLogoLink(link) {
+  if(play_state==StateSplash) {
+    return;
+  }
+  var seg=GetActiveSegment();
+  if(seg!=null) {
+    if(seg.liveLink==link) {
+      return seg.liveLogo;
+    }
+  }
+  strs=link.split('.');
+  ext=strs[strs.length-1].toLowerCase();
+  if((ext=='mp3')||(ext=='')) {
+    return '%AUDIO_LOGO_LINK%';
+  }
+  return '%VIDEO_LOGO_LINK%';
+}
+
+function GetCurrentTime() {
+  var now=new Date();
+  now.setTime(now.getTime()+date_offset);
+  return now;
+}
+
+function YouTubePlayer(filename, start) {
+  if(player!=null) {
+    swfobject.removeSWF(player);
+    player=null;
+  }
+  var params={
+    allowfullscreen: 'false'
+  }
+  var attributes={
+    file: filename,
+    width: '430',
+    height: '365',
+    displayheight: '300',
+    overstretch: 'fit',
+    shuffle: 'false',
+    thumbsindisplay: 'true'
+  }
+  var flashvars;
+  url=filename+'?rel=0&color2=000000';
+  if(start) {
+    url+="&autoplay=1";
+  }
+  swfobject.embedSWF(url,'player_window',430,365,'10','expressInstall.swf',
+		     flashvars,params,attributes,playerLoaded);
+}
+
+function LoudwaterPlayer(filename,start,playlist) {
+  if(player!=null) {
+    swfobject.removeSWF(player);
+    player=null;
+  }
+  var params={
+    allowfullscreen: 'false'
+  }
+  var attributes={
+    file: filename,
+    width: '430',
+    height: '365',
+    displayheight: '300',
+    overstretch: 'fit',
+    shuffle: 'false',
+    thumbsindisplay: 'true'
+  }
+  var flashvars;
+  playlist=true;
+  if(playlist) {
+    flashvars={
+      file: filename,
+      playlist: 'over',
+      playlistsize: '75',
+      displayclick: 'none',
+      screencolor: '#FFFFFF',
+      icons: 'false',
+      skin: 'modieus.swf',
+      plugins: 'metaviewer',
+      id: 'PlayerID',
+      autostart: start
+    }
+    alert('playlist');
+    /*
+    flashvars={
+      file: filename,
+      playlist: 'over',
+      playlistsize: '75',
+      logo: GetLogoLink(filename),
+      displayclick: 'none',
+      screencolor: '#FFFFFF',
+      icons: 'false',
+      skin: 'modieus.swf',
+      id: 'PlayerID',
+      autostart: start
+    }
+    */
+  }
+  else {
+    flashvars={
+      file: filename,
+      playlist: 'none',
+      playlistsize: '75',
+      displayclick: 'none',
+      screencolor: '#000000',
+      icons: 'false',
+      skin: 'modieus.swf',
+      plugins: 'metaviewer',
+      id: 'PlayerID',
+      autostart: start
+    }
+    alert('not playlist');
+    /*
+    flashvars={
+      file: filename,
+      playlist: 'none',
+      playlistsize: '75',
+      logo: GetLogoLink(filename),
+      displayclick: 'none',
+      screencolor: '#FFFFFF',
+      icons: 'false',
+      skin: 'modieus.swf',
+      id: 'PlayerID',
+      autostart: start
+    }
+    */
+  }
+  swfobject.embedSWF('player.swf?%RANDOM%','player_window',430,365,'10',
+		     'expressInstall.swf',flashvars,params,attributes,
+		     playerLoaded);
+}

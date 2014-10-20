@@ -1,0 +1,77 @@
+<!-- Form for testing the RunSpot proxy -->
+
+<script type="text/javascript" src="runspot.js">
+</script>
+<script type="text/javascript" src="utils.js">
+</script>
+<script type="text/javascript">
+  function Submit() {
+    var spot=RunSpot(Id("SID").value,
+                     Id("AD_FORMAT").value,
+                     Id("MINDURATION").value,
+                     Id("MAXDURATION").value,
+                     Id("SPOTLEVEL").value,
+                     Id("CATEGORY_ID").value);
+
+  alert('language: '+spot.language);
+  alert('pubDate: '+spot.pubDate);
+  alert('generator: '+spot.generator);
+  alert('managingEditor: '+spot.managingEditor);
+  alert('dma: '+spot.dma);
+  alert('adURL_high: '+spot.adURL_high);
+  alert('adURL_med: '+spot.adURL_med);
+  alert('adURL_low: '+spot.adURL_low);
+  alert('BannerHREF: '+spot.bannerHREF);
+  alert('topBannerURL: '+spot.topBannerURL);
+  alert('sideBannerURL: '+spot.sideBannerURL);
+  }
+</script>
+
+<html>
+  <head>
+    <title>RunSpot Proxy Test</title>
+  </head>
+  <body>
+    <form action="runspot.pl" method="post">
+    <table cellpadding="2" cellspacing="0" border="0">
+      <tr>
+	<td colspan="2" align="center"><strong>Loudwater RunSpot Test</strong></td>
+      </tr>
+      <tr>
+	<th>Parameter</th>
+	<th>Value</th>
+      </tr>
+      <tr>
+	<td align="right">sid:</td>
+	<td><input id="SID" type="text" name="SID"></td>
+      </tr>
+      <tr>
+	<td align="right">ad_format:</td>
+	<td><input id="AD_FORMAT" type="text" name="AD_FORMAT"></td>
+      </tr>
+      <tr>
+	<td align="right">minduration:</td>
+	<td><input id="MINDURATION" type="text" name="MINDURATION"></td>
+      </tr>
+      <tr>
+	<td align="right">maxduration:</td>
+	<td><input id="MAXDURATION" type="text" name="MAXDURATION"></td>
+      </tr>
+      <tr>
+	<td align="right">spotlevel:</td>
+	<td><input id="SPOTLEVEL" type="text" name="SPOTLEVEL"></td>
+      </tr>
+      <tr>
+	<td align="right">category_id:</td>
+	<td><input id="CATEGORY_ID" type="text" name="CATEGORY_ID"></td>
+      </tr>
+      <tr>
+	<td>&nbsp;</td>
+	<td align="right">
+	  <input type="button" onclick="Submit()" value="Invoke">
+	</td>
+      </tr>
+    </table>
+    </form>
+  </body>
+</html>
