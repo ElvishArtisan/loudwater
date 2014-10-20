@@ -950,3 +950,7 @@
 	channel mode in the Edit Button screen.
 2014-05-30 Fred Gleason <fredg@paravelsystems.com>
 	* Incremented the package version to 0.10.10.
+2014-10-20 Fred Gleason <fredg@paravelsystems.com>
+	* Renamed 'configure.in' to 'configure.in'.
+	* Modernized the 'AM_INIT()' and 'AC_INIT()' invocations in
+	'configure.ac'.

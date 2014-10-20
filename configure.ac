@@ -3,15 +3,27 @@ dnl
 dnl Autoconf configuration for Loudwater.
 dnl Use autoconf to process this into a configure script
 dnl
-dnl   (C) Copyright 2009 Fred Gleason <fredg@paravelsystems.com>
+dnl   (C) Copyright 2009-2014 Fred Gleason <fredg@paravelsystems.com>
 dnl
-dnl      $Id: configure.in,v 1.7 2014/05/09 15:33:35 pcvs Exp $
+dnl   This program is free software; you can redistribute it and/or modify
+dnl   it under the terms of the GNU General Public License version 2 as
+dnl   published by the Free Software Foundation.
+dnl
+dnl   This program is distributed in the hope that it will be useful,
+dnl   but WITHOUT ANY WARRANTY; without even the implied warranty of
+dnl   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+dnl   GNU General Public License for more details.
+dnl
+dnl   You should have received a copy of the GNU General Public
+dnl   License along with this program; if not, write to the Free Software
+dnl   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 dnl
 
-AC_INIT(loudwater,`cat PACKAGE_VERSION`,Fred Gleason <fredg@paravelsystems.com>)
-AM_INIT_AUTOMAKE(loudwater,`cat PACKAGE_VERSION`)
+AC_INIT(loudwater,m4_esyscmd(cat PACKAGE_VERSION))
+AM_INIT_AUTOMAKE
 AC_SUBST(RPM_RELEASE,1)
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
+AC_CONFIG_MACRO_DIR([m4])
 
 #
 # Some Fully Resolved Install Paths

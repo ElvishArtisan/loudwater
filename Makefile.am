@@ -11,6 +11,11 @@
 
 SUBDIRS = docs src scripts helpers modules htdocs images stats lwpd
 
+ACLOCAL_AMFLAGS = -I m4
+
+maintainer-clean-local:	
+	rm -rf m4
+
 install-exec-local:	
 	cp rc.lwpd /etc/init.d/lwpd
 	mkdir -p /var/cache/loudwater/encode
