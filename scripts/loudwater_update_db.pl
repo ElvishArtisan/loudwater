@@ -1073,8 +1073,30 @@ if($db_ver<51) {
     $q->finish();
 }
 
+if($db_ver<52) {
+    $sql="create table if not exists FEEDSETS (".
+	"ID int unsigned not null primary key auto_increment,".
+	"SET_NAME char(8) not null,".
+	"SUN enum('N','Y') not null default 'N',".
+	"MON enum('N','Y') not null default 'N',".
+	"TUE enum('N','Y') not null default 'N',".
+	"WED enum('N','Y') not null default 'N',".
+	"THU enum('N','Y') not null default 'N',".
+	"FRI enum('N','Y') not null default 'N',".
+	"SAT enum('N','Y') not null default 'N',".
+	"START_TIME time not null,".
+	"END_TIME time not null,".
+	"NAME char(64) not null,".
+	"MOUNT_POINT char(255) not null,".
+	"TYPE char(32) not null,".
+	"index SET_NAME_IDX(SET_NAME,SUN,MON,TUE,WED,THU,FRI,SAT,START_TIME,END_TIME))";
+    $q=$dbh->prepare($sql);
+    $q->execute();
+    $q->finish();
+}
 
-$sql="update VERSION set DB=51";
+
+$sql="update VERSION set DB=52";
 $q=$dbh->prepare($sql);
 $q->execute();
 $q->finish();

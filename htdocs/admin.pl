@@ -130,6 +130,12 @@ use constant COMMAND_COMMIT_SET_DEFAULT_THUMBNAIL=>67;
 use constant COMMAND_SELECT_THUMBNAIL=>68;
 use constant COMMAND_COMMIT_SELECT_THUMBNAIL=>69;
 use constant COMMAND_LIST_UPLOADS=>70;
+use constant COMMAND_LIST_FEEDSETS=>71;
+use constant COMMAND_ADD_FEED=>72;
+use constant COMMAND_EDIT_FEED=>73;
+use constant COMMAND_COMMIT_EDIT_FEED=>74;
+use constant COMMAND_DELETE_FEED=>75;
+use constant COMMAND_COMMIT_DELETE_FEED=>76;
 
 use constant BGCOLOR1=>'#E0E0E0';
 use constant BGCOLOR2=>'#F0F0F0';
@@ -157,6 +163,62 @@ my $new_segment_id=0;
 
 do "common.pl";
 do "/etc/loudwater_conf.pl";
+
+sub ServeTimeControl {
+    my $control_name=$_[0];
+    my $value=$_[1];
+    my @hours=["00","01","02","03","04","05","06","07","08","09","10","11",
+	       "12","13","14","15","16","17","18","19","20","21","22","23"];
+    my @minsecs=["00","01","02","03","04","05","06","07","08","09",
+		 "10","11","12","13","14","15","16","17","18","19",
+		 "20","21","22","23","24","25","26","27","28","29",
+		 "30","31","32","33","34","35","36","37","38","39",
+		 "40","41","42","43","44","45","46","47","48","49",
+		 "50","51","52","53","54","55","56","57","58","59"];
+    my @f0=split ":",$value;
+
+    print $post->popup_menu($control_name."_HOUR",@hours,@f0[0]);
+    print ":";
+    print $post->popup_menu($control_name."_MIN",@minsecs,@f0[1]);
+    print ":";
+    print $post->popup_menu($control_name."_SEC",@minsecs,@f0[2]);
+}
+
+
+sub ReadTimeControl {
+    my $control_name=$_[0];
+
+    my $hour=$post->param($control_name."_HOUR");
+    my $min=$post->param($control_name."_MIN");
+    my $sec=$post->param($control_name."_SEC");
+
+    return sprintf("%02d:%02d:%02d",$hour,$min,$sec);
+}    
+
+
+sub ServeCheckControl {
+    my $control_name=$_[0];
+    my $value=$_[1];
+
+    my $user_tag="";
+    if($value eq "Y") {
+	$user_tag="-checked";
+    }
+    print $post->input({-type=>"checkbox",-name=>$control_name,
+			-value=>"1",$user_tag});
+}
+
+
+sub ReadCheckControl {
+    my $control_name=$_[0];
+    my $ret="N";
+
+    if($post->param($control_name) eq "1") {
+	$ret="Y";
+    }
+
+    return $ret;
+}
 
 sub UpdatePostStatus {
     my $post_id=$_[0];
@@ -553,6 +615,20 @@ sub ServeMainMenu {
 	print "</form>\n";
     }
 
+    # Manage Live Streams Button
+    if($manage_players_priv) {
+	print "<form action=\"admin.pl\" method=\"post\">\n";
+	print $post->input({-type=>"hidden",-name=>COMMAND,
+			    -value=>COMMAND_LIST_FEEDSETS});
+	print $post->input({-type=>"hidden",-name=>SESSION_ID,
+			    -value=>$session_id});
+	print "<tr>\n";
+	print $post->td({-align=>"center"},$post->input({-type=>"submit",
+						  -value=>"Manage Live Streams"}));
+	print "</tr>\n";
+	print "</form>\n";
+    }
+
     # Manage Players Button
     if($manage_players_priv) {
 	print "<form action=\"admin.pl\" method=\"post\">\n";
@@ -581,7 +657,7 @@ sub ServeMainMenu {
 	print "</form>\n";
     }
 
-    # Manage content Button
+    # Manage Content Button
     if($manage_content_priv) {
 	print "<form action=\"admin.pl\" method=\"post\">\n";
 	print $post->input({-type=>"hidden",-name=>COMMAND,
@@ -7431,6 +7507,409 @@ sub CommitSelectThumbnails {
 }
 
 
+sub ServeListFeedsets {
+    print $post->header(-type=>'text/html');
+    print "<head>\n";
+    print $post->title("Loudwater Live Web Feeds");
+    print "</head>\n";
+
+    print "<body>\n";
+    print "<table cellspacing=\"0\" cellpadding=\"5\" border=\"0\">\n";
+    my $sql="select ID,SET_NAME,NAME,".
+	"SUN,MON,TUE,WED,THU,FRI,SAT,START_TIME,END_TIME,".
+	"MOUNT_POINT,TYPE from FEEDSETS order by SET_NAME,NAME";
+    my $q=$dbh->prepare($sql);
+    $q->execute();
+    print "<tr>\n";
+    print $post->td({-colspan=>14,-align=>"center"},
+		    "<big><big>Loudwater Live Web Feeds</big></big>");
+    print "</tr>\n";
+
+    print "<tr>\n";
+    print $post->th({-align=>"center"},"Feed Set");
+    print $post->th({-align=>"center"},"Name");
+    print $post->th({-align=>"center"},"Sun");
+    print $post->th({-align=>"center"},"Mon");
+    print $post->th({-align=>"center"},"Tue");
+    print $post->th({-align=>"center"},"Wed");
+    print $post->th({-align=>"center"},"Thu");
+    print $post->th({-align=>"center"},"Fri");
+    print $post->th({-align=>"center"},"Sat");
+    print $post->th({-align=>"center"},"Start");
+    print $post->th({-align=>"center"},"End");
+    print $post->th({-align=>"center"},"Mount Point");
+    print $post->th({-align=>"center"},"&nbsp;");
+    print $post->th({-align=>"center"},"&nbsp;");
+    print "</tr>\n";
+    my $bgcolor=BGCOLOR1;
+    while(my $row=$q->fetchrow_arrayref) {
+	printf "<tr bgcolor=\"%s\">\n",$bgcolor;
+	print $post->td({-align=>"left"},@$row[1]);  # SET_NAME
+	print $post->td({-align=>"left"},@$row[2]);  # NAME
+	print $post->td({-align=>"center"},@$row[3]);  # SUN
+	print $post->td({-align=>"center"},@$row[4]);  # MON
+	print $post->td({-align=>"center"},@$row[5]);  # TUE
+	print $post->td({-align=>"center"},@$row[6]);  # WED
+	print $post->td({-align=>"center"},@$row[7]);  # THU
+	print $post->td({-align=>"center"},@$row[8]);  # FRI
+	print $post->td({-align=>"center"},@$row[9]);  # SAT
+	print $post->td({-align=>"left"},@$row[10]); # START_TIME
+	print $post->td({-align=>"left"},@$row[11]); # END_TIME
+	print $post->td({-align=>"left"},@$row[12]); # MOUNT_POINT
+
+	print "<form action=\"admin.pl\" method=\"post\">\n";
+	print "<td>\n";
+	print $post->input({-type=>"hidden",-name=>COMMAND,
+			    -value=>COMMAND_EDIT_FEED});
+	print $post->input({-type=>"hidden",-name=>SESSION_ID,
+			    -value=>$session_id});
+	print $post->input({-type=>"hidden",-name=>FEEDSET_ID,
+			    -value=>@$row[0]});
+	print $post->input({-type=>"submit",-value=>Edit});
+	print "</td>\n";
+	print "</form>\n";
+	print "<form action=\"admin.pl\" method=\"post\">\n";
+	print "<td>\n";
+	print $post->input({-type=>"hidden",-name=>COMMAND,
+			    -value=>COMMAND_DELETE_FEED});
+	print $post->input({-type=>"hidden",-name=>SESSION_ID,
+			    -value=>$session_id});
+	print $post->input({-type=>"hidden",-name=>FEEDSET_ID,
+			    -value=>@$row[0]});
+	print $post->input({-type=>"submit",-value=>Delete});
+	print "</td>\n";
+	print "</form>\n";
+	print "</tr>\n";
+
+	if($bgcolor eq BGCOLOR1) {
+	    $bgcolor=BGCOLOR2;
+	}
+	else {
+	    $bgcolor=BGCOLOR1;
+	}
+    }
+    $q->finish();
+
+    print "<tr>\n";
+    print "<form action=\"admin.pl\" method=\"post\">\n";
+    print "<td align=\"left\">\n";
+    print $post->input({-type=>"hidden",-name=>COMMAND,
+			-value=>COMMAND_ADD_FEED});
+    print $post->input({-type=>"hidden",-name=>SESSION_ID,
+			-value=>$session_id});
+    print $post->input({-type=>"submit",-value=>"Add Feed"});
+    print "</td>\n";
+    print "</form>\n";
+
+    print $post->td({-colspan=>12},"&nbsp;");
+	
+    print "<form action=\"admin.pl\" method=\"post\">\n";
+    print "<td align=\"left\">\n";
+    print $post->input({-type=>"hidden",-name=>COMMAND,
+			-value=>COMMAND_MAIN_MENU});
+    print $post->input({-type=>"hidden",-name=>SESSION_ID,
+			-value=>$session_id});
+    print $post->input({-type=>"submit",-value=>"Close"});
+    print "</td>\n";
+    print "</form>\n";
+    print "</tr>\n";
+	
+    print "</table>\n";
+    print "</body>\n";
+
+    exit 0;
+}
+
+
+sub AddFeed {
+    my $sql="insert into FEEDSETS set ".
+	"SET_NAME=\"[set]\",".
+	"NAME=\"[new feed]\",".
+	"MOUNT_POINT=\"\",".
+	"TYPE=\"icecast2\",".
+	"START_TIME=\"00:00:00\",".
+	"END_TIME=\"23:59:59\"";
+    $q=$dbh->prepare($sql);
+    $q->execute();
+    $q->finish();
+
+    $new_feedset_id=$dbh->{q{mysql_insertid}};
+}
+
+
+sub ServeEditFeed {
+    my $feedset_id=$new_feedset_id;
+    if($feedset_id==0) {
+	$feedset_id=$post->param("FEEDSET_ID");
+    }
+    print $post->header(-type=>'text/html');
+    print "<head>\n";
+    print $post->title("Loudwater Edit Live Feed");
+    print "</head>\n";
+
+    print "<body>\n";
+    print "<table cellspacing=\"0\" cellpadding=\"5\" border=\"0\">\n";
+    my $sql="select SET_NAME,SUN,MON,TUE,WED,THU,FRI,SAT,".
+	"START_TIME,END_TIME,NAME,MOUNT_POINT,TYPE from FEEDSETS ".
+	sprintf("where ID=%d",$feedset_id);
+
+    my $q=$dbh->prepare($sql);
+    $q->execute();
+    if(my $row=$q->fetchrow_arrayref) {
+	#
+	# Page Title
+	#
+	print "<tr>\n";
+	print $post->td({-colspan=>3,-align=>"center"},
+			"<big><big>Edit Live Feed</big></big>");
+	print "</tr>\n";
+
+	print "<form action=\"admin.pl\" method=\"post\">\n";
+	print $post->input({-type=>"hidden",-name=>COMMAND,
+			    -value=>COMMAND_COMMIT_EDIT_FEED});
+	print $post->input({-type=>"hidden",-name=>SESSION_ID,
+			    -value=>$session_id});
+	print $post->input({-type=>"hidden",-name=>FEEDSET_ID,
+			    -value=>$feedset_id});
+
+	#
+	# Feed Set Name
+	#
+	print "<tr bgcolor=\"".BGCOLOR1."\">\n";
+	print $post->td({-align=>"right"},"<strong><a href=\"admin-doc.html#set_name\" target=\"docs\">Set Name:</a></strong>");
+	print $post->td({-colspan=>2,-align=>"left"},
+			$post->input({-type=>"text",-size=>8,-maxlength=>8,
+				      -name=>SET_NAME,-value=>@$row[0]}));
+	print "</tr>\n";
+
+	#
+	# Mount Point Name
+	#
+	print "<tr bgcolor=\"".BGCOLOR1."\">\n";
+	print $post->td({-align=>"right"},"<strong><a href=\"admin-doc.html#mount_point_name\" target=\"docs\">Mount Point Name:</a></strong>");
+	print $post->td({-colspan=>2,-align=>"left"},
+			$post->input({-type=>"text",-size=>60,-maxlength=>64,
+				      -name=>NAME,-value=>@$row[10]}));
+	print "</tr>\n";
+
+	#
+	# Mount Point
+	#
+	print "<tr bgcolor=\"".BGCOLOR1."\">\n";
+	print $post->td({-align=>"right"},"<strong><a href=\"admin-doc.html#mount_point\" target=\"docs\">Mount Point:</a></strong>");
+	print $post->td({-colspan=>2,-align=>"left"},
+			$post->input({-type=>"text",-size=>60,-maxlength=>255,
+				      -name=>MOUNT_POINT,-value=>@$row[11]}));
+	print "</tr>\n";
+
+	#
+	# Start Time
+	#
+	print "<tr bgcolor=\"".BGCOLOR1."\">\n";
+	print $post->td({-align=>"right"},"<strong><a href=\"admin-doc.html#start_time\" target=\"docs\">Start Time:</a></strong>");
+	print "<td colspan=\"2\" align=\"left\">";
+	&ServeTimeControl("START_TIME",@$row[8]);
+	print "</td>\n";
+	print "</tr>\n";
+
+	#
+	# End Time
+	#
+	print "<tr bgcolor=\"".BGCOLOR1."\">\n";
+	print $post->td({-align=>"right"},"<strong><a href=\"admin-doc.html#end_time\" target=\"docs\">End Time:</a></strong>");
+	print "<td colspan=\"2\" align=\"left\">";
+	&ServeTimeControl("END_TIME",@$row[9]);
+	print "</td>\n";
+	print "</tr>\n";
+
+	#
+	# Days of the Week
+	#
+	print "<tr bgcolor=\"".BGCOLOR1."\">\n";
+	print $post->td({-colspan=>3,-align=>"center"},
+			"<strong><a href=\"admin-doc.html#run_on\" target=\"docs\">Run On</a></strong>");
+	print "</tr>\n";
+
+	#
+	# Monday
+	#
+	print "<tr bgcolor=\"".BGCOLOR1."\">\n";
+	print "<td align=\"right\">";
+	&ServeCheckControl("MON",@$row[2]);
+	print "</td>\n";
+	print $post->td({-colspan=>2,-align=>"left"},"Monday");
+	print "</tr>\n";
+
+	#
+	# Tuesday
+	#
+	print "<tr bgcolor=\"".BGCOLOR1."\">\n";
+	print "<td align=\"right\">";
+	&ServeCheckControl("TUE",@$row[3]);
+	print "</td>\n";
+	print $post->td({-colspan=>2,-align=>"left"},"Tuesday");
+	print "</tr>\n";
+
+	#
+	# Wednesday
+	#
+	print "<tr bgcolor=\"".BGCOLOR1."\">\n";
+	print "<td align=\"right\">";
+	&ServeCheckControl("WED",@$row[4]);
+	print "</td>\n";
+	print $post->td({-colspan=>2,-align=>"left"},"Wednesday");
+	print "</tr>\n";
+
+	#
+	# Thursday
+	#
+	print "<tr bgcolor=\"".BGCOLOR1."\">\n";
+	print "<td align=\"right\">";
+	&ServeCheckControl("THU",@$row[5]);
+	print "</td>\n";
+	print $post->td({-colspan=>2,-align=>"left"},"Thursday");
+	print "</tr>\n";
+
+	#
+	# Friday
+	#
+	print "<tr bgcolor=\"".BGCOLOR1."\">\n";	
+	print "<td align=\"right\">";
+	&ServeCheckControl("FRI",@$row[6]);
+	print "</td>\n";
+	print $post->td({-colspan=>2,-align=>"left"},"Friday");
+	print "</tr>\n";
+
+	#
+	# Saturday
+	#
+	print "<tr bgcolor=\"".BGCOLOR1."\">\n";
+	print "<td align=\"right\">";
+	&ServeCheckControl("SAT",@$row[7]);
+	print "</td>\n";
+	print $post->td({-colspan=>2,-align=>"left"},"Saturday");
+	print "</tr>\n";
+
+	#
+	# Sunday
+	#
+	print "<tr bgcolor=\"".BGCOLOR1."\">\n";
+	print "<td align=\"right\">";
+	&ServeCheckControl("SUN",@$row[8]);
+	print "</td>\n";
+	print $post->td({-colspan=>2,-align=>"left"},"Sunday");
+	print "</tr>\n";
+
+	#
+	# OK Button
+	#
+	print "<tr>\n";
+	print $post->td({-align=>"left"},
+			$post->input({-type=>"submit",-value=>"OK"}));
+	print "</form>\n";
+
+	#
+	# Cancel Button
+	#
+	print "<form action=\"admin.pl\" method=\"post\">\n";
+	if($new_feedset_id eq 0) {
+	    print $post->input({-type=>"hidden",-name=>COMMAND,
+				-value=>COMMAND_LIST_FEEDSETS});
+	}
+	else {
+	    print $post->input({-type=>"hidden",-name=>COMMAND,
+				-value=>COMMAND_COMMIT_DELETE_FEED});
+	    print $post->input({-type=>"hidden",-name=>FEEDSET_ID,
+				-value=>$new_feedset_id});
+	}
+	print $post->input({-type=>"hidden",-name=>SESSION_ID,
+			    -value=>$session_id});
+	print $post->td({-align=>"right"},
+			$post->input({-type=>"submit",-value=>"Cancel"}));
+	print "</form>\n";
+	print "</tr>\n";
+    }
+    $q->finish();
+    print "</table>\n";
+    print "</body>\n";
+}
+
+
+sub ServeCommitFeed {
+    $feedset_id=$post->param("FEEDSET_ID");
+    my $sql="update FEEDSETS set ".
+	"SET_NAME=\"".&EscapeString($post->param("SET_NAME"))."\",".
+	"NAME=\"".&EscapeString($post->param("NAME"))."\",".
+	"MOUNT_POINT=\"".&EscapeString($post->param("MOUNT_POINT"))."\",".
+	"TYPE=\"icecast2\",".
+	"START_TIME=\"".&ReadTimeControl("START_TIME")."\",".
+	"END_TIME=\"".&ReadTimeControl("END_TIME")."\",".
+	"SUN=\"".&ReadCheckControl("SUN")."\",".
+	"MON=\"".&ReadCheckControl("MON")."\",".
+	"TUE=\"".&ReadCheckControl("TUE")."\",".
+	"WED=\"".&ReadCheckControl("WED")."\",".
+	"THU=\"".&ReadCheckControl("THU")."\",".
+	"FRI=\"".&ReadCheckControl("FRI")."\",".
+	"SAT=\"".&ReadCheckControl("SAT")."\" ".
+	sprintf("where ID=%d",$post->param("FEEDSET_ID"));
+    $q=$dbh->prepare($sql);
+    $q->execute();
+    $q->finish();
+}
+
+
+sub ServeDeleteFeed {
+    my $feedset_id=$post->param("FEEDSET_ID");
+    print $post->header(-type=>'text/html');
+    print "<head>\n";
+    print $post->title("Loudwater Delete Feed");
+    print "</head>\n";
+
+    print "<body>\n";
+    print "<table cellspacing=\"0\" cellpadding=\"5\" border=\"0\">\n";
+    print "<tr bgcolor=\"".BGCOLOR1."\">\n";
+    print $post->td({-colspan=>2,-align=>"center"},
+		    "Are you sure that you want to delete this feed?");
+    print "</tr>\n";
+
+    print "<tr>\n";
+    print "<form action=\"admin.pl\" method=\"post\">\n";
+    print $post->input({-type=>"hidden",-name=>COMMAND,
+			-value=>COMMAND_COMMIT_DELETE_FEED});
+    print $post->input({-type=>"hidden",-name=>SESSION_ID,
+			-value=>$session_id});
+    print $post->input({-type=>"hidden",-name=>FEEDSET_ID,
+			-value=>$feedset_id});
+    print $post->td({-align=>"left"},
+		    $post->input({-type=>"submit",-value=>"Yes"}));
+    print "</form>\n";
+
+    print "<form action=\"admin.pl\" method=\"post\">\n";
+    print $post->input({-type=>"hidden",-name=>COMMAND,
+			-value=>COMMAND_LIST_FEEDSETS});
+    print $post->input({-type=>"hidden",-name=>SESSION_ID,
+			-value=>$session_id});
+    print $post->td({-align=>"right"},
+		    $post->input({-type=>"submit",-value=>"No"}));
+    print "</form>\n";
+
+    print "</tr>\n";
+
+    print "</table>\n";
+    print "</body>\n";
+}
+
+
+sub ServeCommitDeleteFeed {
+    my $feedset_id=$post->param("FEEDSET_ID");
+    my $sql=sprintf "delete from FEEDSETS where ID=%d",$feedset_id;
+
+    my $q=$dbh->prepare($sql);
+    $q->execute();
+    $q->finish();
+}
+
+
 sub GetLoudwaterUrl {
     $_=$ENV{'SCRIPT_NAME'};
     s{admin.pl}{}g;
@@ -7792,6 +8271,32 @@ if($command eq COMMAND_COMMIT_SELECT_THUMBNAIL) {
 if($command eq COMMAND_LIST_UPLOADS) {
     &ServeListUploads;
     exit 0;
+}
+if($command eq COMMAND_LIST_FEEDSETS) {
+    &ServeListFeedsets;
+    exit 0;
+}
+if($command eq COMMAND_ADD_FEED) {
+    &AddFeed;
+    &ServeEditFeed;
+    exit 0;
+}
+if($command eq COMMAND_EDIT_FEED) {
+    &ServeEditFeed;
+    exit 0;
+}
+if($command eq COMMAND_COMMIT_EDIT_FEED) {
+    &ServeCommitFeed;
+    &ServeListFeedsets;
+    exit 0;
+}
+if($command eq COMMAND_DELETE_FEED) {
+    &ServeDeleteFeed;
+    exit 0;
+}
+if($command eq COMMAND_COMMIT_DELETE_FEED) {
+    &ServeCommitDeleteFeed;
+    &ServeListFeedsets;
 }
 if($command eq COMMAND_LOGOUT) {
     &LogOut;

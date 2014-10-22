@@ -10,89 +10,95 @@
 ##
 
 install-exec-local:	
-	mkdir -p @libexecdir@/loudwater
-	cp admin.js @libexecdir@/loudwater/
-	cp admin.pl @libexecdir@/loudwater/
-	cp admin-doc.html @libexecdir@/loudwater/
-	cp andotag.html @libexecdir@/loudwater/
-	cp banner.js @libexecdir@/loudwater/
-	cp banner.pl @libexecdir@/loudwater/
-	cp common.pl @libexecdir@/loudwater/
-	cp expressInstall.swf @libexecdir@/loudwater/
-	cp facebook.js @libexecdir@/loudwater/
-	cp feed.pl @libexecdir@/loudwater/
-	cp greenball.png @libexecdir@/loudwater/
-	cp hbanner.html @libexecdir@/loudwater/
-	cp hplay.png @libexecdir@/loudwater/
-	cp listvars.pl @libexecdir@/loudwater/
-	cp makemap.html @libexecdir@/loudwater/
-	cp makemap.pl @libexecdir@/loudwater/
-	cp modieus.swf @libexecdir@/loudwater/
-	cp play-base.png @libexecdir@/loudwater/
-	cp player.css @libexecdir@/loudwater/
-	cp player.html @libexecdir@/loudwater/
-	cp player-sparse.html @libexecdir@/loudwater/
-	cp player.js @libexecdir@/loudwater/
-	cp player.pl @libexecdir@/loudwater/
-	cp player.swf @libexecdir@/loudwater/
-	cp progressbar.gif @libexecdir@/loudwater/
-	cp redball.png @libexecdir@/loudwater/
-	cp remap.pl @libexecdir@/loudwater/
-	cp runspot.html @libexecdir@/loudwater/
-	cp runspot.js @libexecdir@/loudwater/
-	cp runspot.pl @libexecdir@/loudwater/
-	cp social_test.png @libexecdir@/loudwater/
-	cp swfobject.js @libexecdir@/loudwater/
-	cp test_player_config.pl @libexecdir@/loudwater/
-	cp test_player_head.txt @libexecdir@/loudwater/
-	cp track.pl @libexecdir@/loudwater/
-	cp utils.js @libexecdir@/loudwater/
-	cp vbanner.html @libexecdir@/loudwater/
-	cp version.pl @libexecdir@/loudwater/
-	cp vplay.png @libexecdir@/loudwater/
-	cp whiteball.png @libexecdir@/loudwater/
+	mkdir -p $(DESTDIR)@libexecdir@/loudwater
+	cat admin.js | ../helpers/jsmin > $(DESTDIR)@libexecdir@/loudwater/admin.js
+	cp admin.pl $(DESTDIR)@libexecdir@/loudwater/
+	cp admin-doc.html $(DESTDIR)@libexecdir@/loudwater/
+	cp andotag.html $(DESTDIR)@libexecdir@/loudwater/
+	cat banner.js | ../helpers/jsmin > $(DESTDIR)@libexecdir@/loudwater/banner.js
+	cp banner.pl $(DESTDIR)@libexecdir@/loudwater/
+	cp common.pl $(DESTDIR)@libexecdir@/loudwater/
+	cp expressInstall.swf $(DESTDIR)@libexecdir@/loudwater/
+	cat facebook.js | ../helpers/jsmin > $(DESTDIR)@libexecdir@/loudwater/facebook.js
+	cp feed.pl $(DESTDIR)@libexecdir@/loudwater/
+	rm -f $(DESTDIR)@libexecdir@/loudwater/feed.xml
+	ln -s feed.pl $(DESTDIR)@libexecdir@/loudwater/feed.xml
+	cp greenball.png $(DESTDIR)@libexecdir@/loudwater/
+	cp hbanner.html $(DESTDIR)@libexecdir@/loudwater/
+	cp hplay.png $(DESTDIR)@libexecdir@/loudwater/
+	cp listvars.pl $(DESTDIR)@libexecdir@/loudwater/
+	cp live.pl $(DESTDIR)@libexecdir@/loudwater/
+	cp makemap.html $(DESTDIR)@libexecdir@/loudwater/
+	cp makemap.pl $(DESTDIR)@libexecdir@/loudwater/
+	cp modieus.swf $(DESTDIR)@libexecdir@/loudwater/
+	cp play-base.png $(DESTDIR)@libexecdir@/loudwater/
+	cp player.css $(DESTDIR)@libexecdir@/loudwater/
+	cp player.html $(DESTDIR)@libexecdir@/loudwater/
+	cp player-sparse.html $(DESTDIR)@libexecdir@/loudwater/
+	cat player.js | ../helpers/jsmin > $(DESTDIR)@libexecdir@/loudwater/player.js
+	cp player.pl $(DESTDIR)@libexecdir@/loudwater/
+	cp player.swf $(DESTDIR)@libexecdir@/loudwater/
+	cp progressbar.gif $(DESTDIR)@libexecdir@/loudwater/
+	cp redball.png $(DESTDIR)@libexecdir@/loudwater/
+	cp remap.pl $(DESTDIR)@libexecdir@/loudwater/
+	cp runspot.html $(DESTDIR)@libexecdir@/loudwater/
+	cat runspot.js | ../helpers/jsmin > $(DESTDIR)@libexecdir@/loudwater/runspot.js
+	cp runspot.pl $(DESTDIR)@libexecdir@/loudwater/
+	cp social_test.png $(DESTDIR)@libexecdir@/loudwater/
+	cat swfobject.js | ../helpers/jsmin > $(DESTDIR)@libexecdir@/loudwater/swfobject.js
+	cp test_player_config.pl $(DESTDIR)@libexecdir@/loudwater/
+	cp test_player_head.txt $(DESTDIR)@libexecdir@/loudwater/
+	cp track.pl $(DESTDIR)@libexecdir@/loudwater/
+	cp utils.js $(DESTDIR)@libexecdir@/loudwater/
+	cat utils.js | ../helpers/jsmin > $(DESTDIR)@libexecdir@/loudwater/utils.js
+	cp vbanner.html $(DESTDIR)@libexecdir@/loudwater/
+	cp version.pl $(DESTDIR)@libexecdir@/loudwater/
+	cp vplay.png $(DESTDIR)@libexecdir@/loudwater/
+	cp whiteball.png $(DESTDIR)@libexecdir@/loudwater/
 
 uninstall:	
-	rm -f @libexecdir@/loudwater/admin.js
-	rm -f @libexecdir@/loudwater/admin.pl
-	rm -f @libexecdir@/loudwater/admin-doc.html
-	rm -f @libexecdir@/loudwater/andotag.html
-	rm -f @libexecdir@/loudwater/banner.js
-	rm -f @libexecdir@/loudwater/banner.pl
-	rm -f @libexecdir@/loudwater/common.pl
-	rm -f @libexecdir@/loudwater/expressInstall.swf
-	rm -f @libexecdir@/loudwater/facebook.js
-	rm -f @libexecdir@/loudwater/feed.pl
-	rm -f @libexecdir@/loudwater/greenball.png
-	rm -f @libexecdir@/loudwater/hbanner.html
-	rm -f @libexecdir@/loudwater/hplay.png
-	rm -f @libexecdir@/loudwater/listvars.pl
-	rm -f @libexecdir@/loudwater/makemap.html
-	rm -f @libexecdir@/loudwater/makemap.pl
-	rm -f @libexecdir@/loudwater/modieus.swf
-	rm -f @libexecdir@/loudwater/play-base.png
-	rm -f @libexecdir@/loudwater/player.css
-	rm -f @libexecdir@/loudwater/player.html
-	rm -f @libexecdir@/loudwater/player-sparse.html
-	rm -f @libexecdir@/loudwater/player.js
-	rm -f @libexecdir@/loudwater/player.pl
-	rm -f @libexecdir@/loudwater/player.swf
-	rm -f @libexecdir@/loudwater/progressbar.gif
-	rm -f @libexecdir@/loudwater/redball.png
-	rm -f @libexecdir@/loudwater/remap.pl
-	rm -f @libexecdir@/loudwater/runspot.html
-	rm -f @libexecdir@/loudwater/runspot.js
-	rm -f @libexecdir@/loudwater/runspot.pl
-	rm -f @libexecdir@/loudwater/social_test.png
-	rm -f @libexecdir@/loudwater/swfobject.js
-	rm -f @libexecdir@/loudwater/test_player_config.pl
-	rm -f @libexecdir@/loudwater/test_player_head.txt
-	rm -f @libexecdir@/loudwater/track.pl
-	rm -f @libexecdir@/loudwater/utils.js
-	rm -f @libexecdir@/loudwater/vbanner.html
-	rm -f @libexecdir@/loudwater/version.pl
-	rm -f @libexecdir@/loudwater/vplay.png
-	rm -f @libexecdir@/loudwater/whiteball.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/admin.js
+	rm -f $(DESTDIR)@libexecdir@/loudwater/admin.pl
+	rm -f $(DESTDIR)@libexecdir@/loudwater/admin-doc.html
+	rm -f $(DESTDIR)@libexecdir@/loudwater/andotag.html
+	rm -f $(DESTDIR)@libexecdir@/loudwater/banner.js
+	rm -f $(DESTDIR)@libexecdir@/loudwater/banner.pl
+	rm -f $(DESTDIR)@libexecdir@/loudwater/common.pl
+	rm -f $(DESTDIR)@libexecdir@/loudwater/expressInstall.swf
+	rm -f $(DESTDIR)@libexecdir@/loudwater/facebook.js
+	rm -f $(DESTDIR)@libexecdir@/loudwater/feed.pl
+	rm -f $(DESTDIR)@libexecdir@/loudwater/feed.xml
+	rm -f $(DESTDIR)@libexecdir@/loudwater/greenball.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/hbanner.html
+	rm -f $(DESTDIR)@libexecdir@/loudwater/hplay.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/listvars.pl
+	rm -f $(DESTDIR)@libexecdir@/loudwater/live.pl
+	rm -f $(DESTDIR)@libexecdir@/loudwater/makemap.html
+	rm -f $(DESTDIR)@libexecdir@/loudwater/makemap.pl
+	rm -f $(DESTDIR)@libexecdir@/loudwater/modieus.swf
+	rm -f $(DESTDIR)@libexecdir@/loudwater/play-base.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/player.css
+	rm -f $(DESTDIR)@libexecdir@/loudwater/player.html
+	rm -f $(DESTDIR)@libexecdir@/loudwater/player-sparse.html
+	rm -f $(DESTDIR)@libexecdir@/loudwater/player.js
+	rm -f $(DESTDIR)@libexecdir@/loudwater/player.pl
+	rm -f $(DESTDIR)@libexecdir@/loudwater/player.swf
+	rm -f $(DESTDIR)@libexecdir@/loudwater/progressbar.gif
+	rm -f $(DESTDIR)@libexecdir@/loudwater/redball.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/remap.pl
+	rm -f $(DESTDIR)@libexecdir@/loudwater/runspot.html
+	rm -f $(DESTDIR)@libexecdir@/loudwater/runspot.js
+	rm -f $(DESTDIR)@libexecdir@/loudwater/runspot.pl
+	rm -f $(DESTDIR)@libexecdir@/loudwater/social_test.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/swfobject.js
+	rm -f $(DESTDIR)@libexecdir@/loudwater/test_player_config.pl
+	rm -f $(DESTDIR)@libexecdir@/loudwater/test_player_head.txt
+	rm -f $(DESTDIR)@libexecdir@/loudwater/track.pl
+	rm -f $(DESTDIR)@libexecdir@/loudwater/utils.js
+	rm -f $(DESTDIR)@libexecdir@/loudwater/vbanner.html
+	rm -f $(DESTDIR)@libexecdir@/loudwater/version.pl
+	rm -f $(DESTDIR)@libexecdir@/loudwater/vplay.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/whiteball.png
 
 EXTRA_DIST =  admin.js\
               admin.pl\
@@ -108,6 +114,7 @@ EXTRA_DIST =  admin.js\
               hbanner.html\
               hplay.png\
               listvars.pl\
+              live.pl\
               makemap.html\
               makemap.pl\
               modieus.swf\

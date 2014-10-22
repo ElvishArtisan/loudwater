@@ -39,99 +39,28 @@ database required.
 
 
 %build
-./configure --prefix=@LOCAL_PREFIX@ --libexecdir=@libexecdir@
+./configure --prefix=@LOCAL_PREFIX@ --libexecdir=@libexecdir@ --sysconfdir=@sysconfdir@
 make
 
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-
-mkdir -p $RPM_BUILD_ROOT@prefix@/bin
-cp stats/loudwater_stats_client_report.pl $RPM_BUILD_ROOT@prefix@/bin/
-cp stats/loudwater_stats_common.pl $RPM_BUILD_ROOT@prefix@/bin/
-cp stats/loudwater_stats_finish_reports.pl $RPM_BUILD_ROOT@prefix@/bin/
-cp stats/loudwater_stats_start_reports.pl $RPM_BUILD_ROOT@prefix@/bin/
-cp stats/loudwater_stats_update_db.pl $RPM_BUILD_ROOT@prefix@/bin/
-mkdir -p $RPM_BUILD_ROOT@prefix@/sbin
-cp scripts/loudwater_update_db.pl $RPM_BUILD_ROOT@prefix@/sbin/
-cp scripts/loudwater_migrate_logs.pl $RPM_BUILD_ROOT@prefix@/sbin/
-cp lwpd/lwpd $RPM_BUILD_ROOT@prefix@/sbin/
-cp lwpd/lwingest $RPM_BUILD_ROOT@prefix@/sbin/
-cp lwpd/lwencode $RPM_BUILD_ROOT@prefix@/sbin/
-cp lwpd/lwdistribute $RPM_BUILD_ROOT@prefix@/sbin/
-cp lwpd/lwmaintain $RPM_BUILD_ROOT@prefix@/sbin/
-cp lwpd/lwsync $RPM_BUILD_ROOT@prefix@/sbin/
-mkdir -p $RPM_BUILD_ROOT/etc
-cp loudwater_conf-sample.pl $RPM_BUILD_ROOT/etc/loudwater_conf.pl
-mkdir -p $RPM_BUILD_ROOT@libexecdir@/loudwater
-cat htdocs/admin.js | helpers/jsmin > $RPM_BUILD_ROOT@libexecdir@/loudwater/admin.js
-cp htdocs/admin.pl $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/admin-doc.html $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/andotag.html $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/common.pl $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cat htdocs/facebook.js | helpers/jsmin > $RPM_BUILD_ROOT@libexecdir@/loudwater/facebook.js
-cp htdocs/hbanner.html $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/player.css $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/vplay.png $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/hplay.png $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/player.html $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/player-sparse.html $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cat htdocs/player.js | helpers/jsmin > $RPM_BUILD_ROOT@libexecdir@/loudwater/player.js
-cp htdocs/player.pl $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/remap.pl $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cat htdocs/utils.js | helpers/jsmin > $RPM_BUILD_ROOT@libexecdir@/loudwater/utils.js
-cp htdocs/banner.pl $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/banner.js $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/vbanner.html $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/makemap.pl $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/version.pl $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/feed.pl $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/track.pl $RPM_BUILD_ROOT@libexecdir@/loudwater/
-ln -s @libexecdir@/loudwater/feed.pl $RPM_BUILD_ROOT@libexecdir@/loudwater/feed.xml
-cp htdocs/runspot.html $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cat htdocs/runspot.js | helpers/jsmin > $RPM_BUILD_ROOT@libexecdir@/loudwater/runspot.js
-cp htdocs/runspot.pl $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/player.swf $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/modieus.swf $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/expressInstall.swf $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/swfobject.js $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/test_player_config.pl $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/test_player_head.txt $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/greenball.png $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/redball.png $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/whiteball.png $RPM_BUILD_ROOT@libexecdir@/loudwater/
-cp htdocs/progressbar.gif $RPM_BUILD_ROOT@libexecdir@/loudwater/
-mkdir -p $RPM_BUILD_ROOT@libexecdir@/loudwater/images
-cp images/android-16x16.png $RPM_BUILD_ROOT@libexecdir@/loudwater/images/
-cp images/blackberry-16x16.png $RPM_BUILD_ROOT@libexecdir@/loudwater/images/
-cp images/chrome-16x16.png $RPM_BUILD_ROOT@libexecdir@/loudwater/images/
-cp images/firefox-16x16.png $RPM_BUILD_ROOT@libexecdir@/loudwater/images/
-cp images/ie-16x16.png $RPM_BUILD_ROOT@libexecdir@/loudwater/images/
-cp images/ipod-16x16.png $RPM_BUILD_ROOT@libexecdir@/loudwater/images/
-cp images/itunes-16x16.png $RPM_BUILD_ROOT@libexecdir@/loudwater/images/
-cp images/linux-16x16.png $RPM_BUILD_ROOT@libexecdir@/loudwater/images/
-cp images/opera-16x16.png $RPM_BUILD_ROOT@libexecdir@/loudwater/images/
-cp images/osx-16x16.png $RPM_BUILD_ROOT@libexecdir@/loudwater/images/
-cp images/question-16x16.png $RPM_BUILD_ROOT@libexecdir@/loudwater/images/
-cp images/safari-16x16.png $RPM_BUILD_ROOT@libexecdir@/loudwater/images/
-cp images/windows-16x16.png $RPM_BUILD_ROOT@libexecdir@/loudwater/images/
-cp images/yahoopipes-16x16.png $RPM_BUILD_ROOT@libexecdir@/loudwater/images/
-
-mkdir -p $RPM_BUILD_ROOT/etc/init.d
-cp rc.lwpd $RPM_BUILD_ROOT/etc/init.d/lwpd
-mkdir -p $RPM_BUILD_ROOT/etc/httpd/conf.d
-cp loudwater.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/
-mkdir -p $RPM_BUILD_ROOT/var/cache/loudwater/encode
-mkdir -p $RPM_BUILD_ROOT/var/cache/loudwater/ingest
-mkdir -p $RPM_BUILD_ROOT/var/cache/loudwater/upload
-mkdir -p $RPM_BUILD_ROOT/var/log/loudwater
+make install DESTDIR=$RPM_BUILD_ROOT
 
 %post
-/etc/init.d/httpd restart
+if test "@DISTRO@" = "suse" ; then
+  PACKAGE_DOC_DIR=%_docdir/%{name}
+fi
+if test "@DISTRO@" = "redhat" ; then
+  PACKAGE_DOC_DIR=%_docdir/%{name}-@VERSION@
+fi
+if test ! -e /etc/loudwater_conf.pl ; then
+  cp $PACKAGE_DOC_DIR/loudwater_conf-sample.pl /etc/loudwater_conf.pl
+fi
+service httpd restart
 
 %postun
-/etc/init.d/httpd restart
+service httpd restart
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -146,46 +75,9 @@ rm -rf $RPM_BUILD_ROOT
 @prefix@/sbin/lwmaintain
 @prefix@/sbin/lwsync
 @prefix@/sbin/lwdistribute
-%config /etc/loudwater_conf.pl
-@libexecdir@/loudwater/admin.js
-@libexecdir@/loudwater/admin.pl
-@libexecdir@/loudwater/admin-doc.html
-@libexecdir@/loudwater/andotag.html
-@libexecdir@/loudwater/common.pl
-@libexecdir@/loudwater/facebook.js
-@libexecdir@/loudwater/hbanner.html
-@libexecdir@/loudwater/hplay.png
-@libexecdir@/loudwater/vplay.png
-@libexecdir@/loudwater/player.css
-@libexecdir@/loudwater/player.html
-@libexecdir@/loudwater/player-sparse.html
-@libexecdir@/loudwater/player.js
-@libexecdir@/loudwater/player.pl
-@libexecdir@/loudwater/makemap.pl
-@libexecdir@/loudwater/remap.pl
-@libexecdir@/loudwater/feed.pl
-@libexecdir@/loudwater/feed.xml
-@libexecdir@/loudwater/utils.js
-@libexecdir@/loudwater/banner.pl
-@libexecdir@/loudwater/track.pl
-@libexecdir@/loudwater/banner.js
-@libexecdir@/loudwater/vbanner.html
-@libexecdir@/loudwater/version.pl
-@libexecdir@/loudwater/runspot.html
-@libexecdir@/loudwater/runspot.js
-@libexecdir@/loudwater/runspot.pl
-@libexecdir@/loudwater/player.swf
-@libexecdir@/loudwater/modieus.swf
-@libexecdir@/loudwater/expressInstall.swf
-@libexecdir@/loudwater/swfobject.js
-@libexecdir@/loudwater/greenball.png
-@libexecdir@/loudwater/redball.png
-@libexecdir@/loudwater/whiteball.png
-@libexecdir@/loudwater/progressbar.gif
+@libexecdir@/loudwater/*
 %attr(755,root,root) /etc/init.d/lwpd
-%config @libexecdir@/loudwater/test_player_config.pl
-%config @libexecdir@/loudwater/test_player_head.txt
-/etc/httpd/conf.d/loudwater.conf
+@sysconfdir@/loudwater.conf
 %attr(777,root,root) /var/cache/loudwater/encode
 %attr(777,root,root) /var/cache/loudwater/ingest
 %attr(777,root,root) /var/cache/loudwater/upload
@@ -201,81 +93,9 @@ rm -rf $RPM_BUILD_ROOT
 @prefix@/bin/loudwater_stats_finish_reports.pl
 @prefix@/bin/loudwater_stats_start_reports.pl
 @prefix@/bin/loudwater_stats_update_db.pl
-@libexecdir@/loudwater/images/android-16x16.png
-@libexecdir@/loudwater/images/blackberry-16x16.png
-@libexecdir@/loudwater/images/chrome-16x16.png
-@libexecdir@/loudwater/images/firefox-16x16.png
-@libexecdir@/loudwater/images/ie-16x16.png
-@libexecdir@/loudwater/images/ipod-16x16.png
-@libexecdir@/loudwater/images/itunes-16x16.png
-@libexecdir@/loudwater/images/linux-16x16.png
-@libexecdir@/loudwater/images/opera-16x16.png
-@libexecdir@/loudwater/images/osx-16x16.png
-@libexecdir@/loudwater/images/question-16x16.png
-@libexecdir@/loudwater/images/safari-16x16.png
-@libexecdir@/loudwater/images/windows-16x16.png
-@libexecdir@/loudwater/images/yahoopipes-16x16.png
+@libexecdir@/loudwater/images/*
 %doc loudwater_stats_conf-sample.pl
 
 %changelog
-* Fri May 30 2014 Fred Gleason <fredg@paravelsystems.com>
--- Added a 'sox' dependency.
-* Wed May 14 2014 Fred Gleason <fredg@paravelsystems.com>
--- Added a 'perl-HTML-Parser' dependency.
-* Fri May  9 2014 Fred Gleason <fredg@paravelsystems.com>
--- Replaced the 'apache2' dependency with 'httpd'.
-* Fri Jan 20 2012 Fred Gleason <fredg@paravelsystems.com>
--- Correct installation location for web components.
-* Thu Jan 19 2012 Fred Gleason <fredg@paravelsystems.com>
--- Fixed a typo in the 'perl-Text-CSV_XS' dependency listing
-* Wed Jan  4 2012 Fred Gleason <fredg@paravelsystems.com>
--- Added 'stats' sub-package.
-* Fri Dec 22 2011 Fred Gleason <fredg@paravelsystems.com>
--- Removed dependency for 'perl-Net-DNS'.
-* Fri Dec 16 2011 Fred Gleason <fredg@paravelsystems.com>
--- Added dependency for 'perl-Date-Manip'.
--- Added dependency for 'perl-Net-DNS'.
-* Thu Dec 15 2011 Fred Gleason <fredg@paravelsystems.com>
--- Added dependency for 'perl-Text-CSV_XS'.
--- Added '/var/log/loudwater/'.
--- Added '/usr/bin/loudwater_migrate_logs.pl'.
-* Wed Dec 09 2011 Fred Gleason <fredg@paravelsystems.com>
--- Added 'facebook.js'.
--- Added 'makemap.pl'.
--- Added 'remap.pl'.
--- Added dependency for 'perl-String-Random'.
--- Added dependency for 'perl-XML-LibXSLT'.
--- Added dependency for 'perl-Unix-Syslog'.
--- Added dependency for 'perl-XML-LibXML'.
-* Tue Oct 06 2011 Fred Gleason <fredg@paravelsystems.com>
--- Added 'player-sparse.html'.
-* Tue Oct 06 2010 Fred Gleason <fredg@paravelsystems.com>
--- Added 'hplay.png' and 'vplay.png'.
-* Fri Sep 17 2010 Fred Gleason <fredg@paravelsystems.com>
--- Added 'track.pl'.
-* Wed Sep 01 2010 Fred Gleason <fredg@paravelsystems.com>
--- Added 'vbanner.html' and 'hbanner.html'.
-* Mon Aug 02 2010 Fred Gleason <fredg@paravelsystems.com>
--- Added lwsync(8).
-* Tue Nov 03 2009 Fred Gleason <fredg@paravelsystems.com>
--- Added the '/var/cache/loudwater/' directories.
--- Added lwencode(8), lwingest(8), lwdistribute(8) and lwmaintain(8).
-* Thu Oct 29 2009 Fred Gleason <fredg@paravelsystems.com>
--- Added lwpd(8).
-* Wed Sep 09 2009 Fred Gleason <fredg@paravelsystems.com>
--- Added '/etc/init.d/lwpd'.
-* Wed Jul 08 2009 Fred Gleason <fredg@paravelsystems.com>
--- Added the perl-TimeDate dependency.
-* Tue Jul 07 2009 Fred Gleason <fredg@paravelsystems.com>
--- Removed the perl-Date-calc dependency.
-* Thu Jun 18 2009 Fred Gleason <fredg@paravelsystems.com>
--- Minified 'htdocs/player.js'.
-* Wed Jun 03 2009 Fred Gleason <fredg@paravelsystems.com>
--- Added 'test_player_head.txt'.
-* Thu May 28 2009 Fred Gleason <fredg@paravelsystems.com>
--- Added a dependency for 'perl-DBD-mysql'.
--- Added 'loudwater_update_db.pl'.
--- Added 'loudwater_conf.pl'.
--- Added 'admin.pl'.
-* Wed May 27 2009 Fred Gleason <fredg@paravelsystems.com>
--- Initial RPM creation.
+* @RPM_DATESTAMP@ Fred Gleason <fredg@paravelsystems.com> - @VERSION@-@RPM_RELEASE@
+-- Autogenerated from build tree.

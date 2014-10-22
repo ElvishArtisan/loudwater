@@ -10,37 +10,37 @@
 ##
 
 install-exec-local:	
-	mkdir -p @libexecdir@/loudwater/images
-	cp android-16x16.png @libexecdir@/loudwater/images/
-	cp blackberry-16x16.png @libexecdir@/loudwater/images/
-	cp chrome-16x16.png @libexecdir@/loudwater/images/
-	cp firefox-16x16.png @libexecdir@/loudwater/images/
-	cp ie-16x16.png @libexecdir@/loudwater/images/
-	cp ipod-16x16.png @libexecdir@/loudwater/images/
-	cp itunes-16x16.png @libexecdir@/loudwater/images/
-	cp linux-16x16.png @libexecdir@/loudwater/images/
-	cp opera-16x16.png @libexecdir@/loudwater/images/
-	cp osx-16x16.png @libexecdir@/loudwater/images/
-	cp question-16x16.png @libexecdir@/loudwater/images/
-	cp safari-16x16.png @libexecdir@/loudwater/images/
-	cp windows-16x16.png @libexecdir@/loudwater/images/
-	cp yahoopipes-16x16.png @libexecdir@/loudwater/images/
+	mkdir -p $(DESTDIR)@libexecdir@/loudwater/images
+	cp android-16x16.png $(DESTDIR)@libexecdir@/loudwater/images/
+	cp blackberry-16x16.png $(DESTDIR)@libexecdir@/loudwater/images/
+	cp chrome-16x16.png $(DESTDIR)@libexecdir@/loudwater/images/
+	cp firefox-16x16.png $(DESTDIR)@libexecdir@/loudwater/images/
+	cp ie-16x16.png $(DESTDIR)@libexecdir@/loudwater/images/
+	cp ipod-16x16.png $(DESTDIR)@libexecdir@/loudwater/images/
+	cp itunes-16x16.png $(DESTDIR)@libexecdir@/loudwater/images/
+	cp linux-16x16.png $(DESTDIR)@libexecdir@/loudwater/images/
+	cp opera-16x16.png $(DESTDIR)@libexecdir@/loudwater/images/
+	cp osx-16x16.png $(DESTDIR)@libexecdir@/loudwater/images/
+	cp question-16x16.png $(DESTDIR)@libexecdir@/loudwater/images/
+	cp safari-16x16.png $(DESTDIR)@libexecdir@/loudwater/images/
+	cp windows-16x16.png $(DESTDIR)@libexecdir@/loudwater/images/
+	cp yahoopipes-16x16.png $(DESTDIR)@libexecdir@/loudwater/images/
 
 uninstall:
-	rm -f @libexecdir@/loudwater/images/android-16x16.png
-	rm -f @libexecdir@/loudwater/images/blackberry-16x16.png
-	rm -f @libexecdir@/loudwater/images/chrome-16x16.png
-	rm -f @libexecdir@/loudwater/images/firefox-16x16.png
-	rm -f @libexecdir@/loudwater/images/ie-16x16.png
-	rm -f @libexecdir@/loudwater/images/ipod-16x16.png
-	rm -f @libexecdir@/loudwater/images/itunes-16x16.png
-	rm -f @libexecdir@/loudwater/images/linux-16x16.png
-	rm -f @libexecdir@/loudwater/images/opera-16x16.png
-	rm -f @libexecdir@/loudwater/images/osx-16x16.png
-	rm -f @libexecdir@/loudwater/images/question-16x16.png
-	rm -f @libexecdir@/loudwater/images/safari-16x16.png
-	rm -f @libexecdir@/loudwater/images/windows-16x16.png
-	rm -f @libexecdir@/loudwater/images/yahoopipes-16x16.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/images/android-16x16.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/images/blackberry-16x16.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/images/chrome-16x16.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/images/firefox-16x16.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/images/ie-16x16.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/images/ipod-16x16.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/images/itunes-16x16.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/images/linux-16x16.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/images/opera-16x16.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/images/osx-16x16.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/images/question-16x16.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/images/safari-16x16.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/images/windows-16x16.png
+	rm -f $(DESTDIR)@libexecdir@/loudwater/images/yahoopipes-16x16.png
 
 EXTRA_DIST =  android-16x16.png\
               blackberry-16x16.png\

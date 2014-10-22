@@ -1,4 +1,4 @@
 This is the installation file for the Loudwater package.
 
 Configure invocation for CentOS 6:
-./configure --prefix=/usr --libexecdir=/home/live/htdocs
+./configure --prefix=/usr --libexecdir=/home/live/htdocs --sysconfdir=/etc/httpd/conf.d
