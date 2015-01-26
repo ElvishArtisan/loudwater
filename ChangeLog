@@ -962,3 +962,10 @@
 	screen in 'htdocs/admin.pl'.
 2014-10-22 Fred Gleason <fredg@paravelsystems.com>
 	* Incremented the package version to 0.11.0.
+2015-01-26 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'FEEDSETS.LOGO_LINK' field to the database.
+	* Incremented the database version to 53.
+	* Added a 'Logo Link' control to the 'Edit Live Feed' screen in
+	'htdocs/admin.pl'.
+	* Added an 'image' tag to the live stream data feed in
+	'htdocs/live.pl'.

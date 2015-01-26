@@ -49,7 +49,7 @@ if(!$dbh) {
 #
 ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time());
 $now=sprintf "%02d:%02d:%02d",$hour,$min,$sec;
-my $sql="select NAME,MOUNT_POINT,TYPE from FEEDSETS ".
+my $sql="select NAME,MOUNT_POINT,TYPE,LOGO_LINK from FEEDSETS ".
     "where (SET_NAME=\"".$feed_name."\")&&";
 if($wday==0) {
     $sql=$sql."(SUN='Y')&&";
@@ -89,6 +89,7 @@ while($row=$q->fetchrow_arrayref) {
     print "    <name>".@$row[0]."</name>\n";
     print "    <mountPoint>".@$row[1]."</mountPoint>\n";
     print "    <type>".@$row[2]."</type>\n";
+    print "    <image>".@$row[3]."</image>\n";
     print "  </liveFeed>\n";
 }
 print "</liveFeeds>\n";

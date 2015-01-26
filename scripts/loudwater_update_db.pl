@@ -1095,8 +1095,14 @@ if($db_ver<52) {
     $q->finish();
 }
 
+if($db_ver<53) {
+    $sql="alter table FEEDSETS add column LOGO_LINK char(255) after TYPE";
+    $q=$dbh->prepare($sql);
+    $q->execute();
+    $q->finish();
+}
 
-$sql="update VERSION set DB=52";
+$sql="update VERSION set DB=53";
 $q=$dbh->prepare($sql);
 $q->execute();
 $q->finish();

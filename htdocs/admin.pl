@@ -7650,7 +7650,7 @@ sub ServeEditFeed {
     print "<body>\n";
     print "<table cellspacing=\"0\" cellpadding=\"5\" border=\"0\">\n";
     my $sql="select SET_NAME,SUN,MON,TUE,WED,THU,FRI,SAT,".
-	"START_TIME,END_TIME,NAME,MOUNT_POINT,TYPE from FEEDSETS ".
+	"START_TIME,END_TIME,NAME,MOUNT_POINT,TYPE,LOGO_LINK from FEEDSETS ".
 	sprintf("where ID=%d",$feedset_id);
 
     my $q=$dbh->prepare($sql);
@@ -7700,6 +7700,16 @@ sub ServeEditFeed {
 	print $post->td({-colspan=>2,-align=>"left"},
 			$post->input({-type=>"text",-size=>60,-maxlength=>255,
 				      -name=>MOUNT_POINT,-value=>@$row[11]}));
+	print "</tr>\n";
+
+	#
+	# Logo Link URL
+	#
+	print "<tr bgcolor=\"".BGCOLOR1."\">\n";
+	print $post->td({-align=>"right"},"<strong><a href=\"admin-doc.html#logo_link\" target=\"docs\">Logo Link:</a></strong>");
+	print $post->td({-colspan=>2,-align=>"left"},
+			$post->input({-type=>"text",-size=>60,-maxlength=>255,
+				      -name=>LOGO_LINK,-value=>@$row[13]}));
 	print "</tr>\n";
 
 	#
@@ -7841,6 +7851,7 @@ sub ServeCommitFeed {
 	"SET_NAME=\"".&EscapeString($post->param("SET_NAME"))."\",".
 	"NAME=\"".&EscapeString($post->param("NAME"))."\",".
 	"MOUNT_POINT=\"".&EscapeString($post->param("MOUNT_POINT"))."\",".
+	"LOGO_LINK=\"".&EscapeString($post->param("LOGO_LINK"))."\",".
 	"TYPE=\"icecast2\",".
 	"START_TIME=\"".&ReadTimeControl("START_TIME")."\",".
 	"END_TIME=\"".&ReadTimeControl("END_TIME")."\",".
