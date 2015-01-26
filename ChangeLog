@@ -969,3 +969,5 @@
 	'htdocs/admin.pl'.
 	* Added an 'image' tag to the live stream data feed in
 	'htdocs/live.pl'.
+2015-01-26 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 0.12.0.
