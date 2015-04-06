@@ -7516,7 +7516,7 @@ sub ServeListFeedsets {
     print "<body>\n";
     print "<table cellspacing=\"0\" cellpadding=\"5\" border=\"0\">\n";
     my $sql="select ID,SET_NAME,NAME,".
-	"SUN,MON,TUE,WED,THU,FRI,SAT,START_TIME,END_TIME,".
+	"SUN,MON,TUE,WED,THU,FRI,SAT,START_TIME,END_TIME,IS_DEFAULT,".
 	"MOUNT_POINT,TYPE from FEEDSETS order by SET_NAME,NAME";
     my $q=$dbh->prepare($sql);
     $q->execute();
@@ -7537,6 +7537,7 @@ sub ServeListFeedsets {
     print $post->th({-align=>"center"},"Sat");
     print $post->th({-align=>"center"},"Start");
     print $post->th({-align=>"center"},"End");
+    print $post->th({-align=>"center"},"Default");
     print $post->th({-align=>"center"},"Mount Point");
     print $post->th({-align=>"center"},"&nbsp;");
     print $post->th({-align=>"center"},"&nbsp;");
@@ -7555,7 +7556,8 @@ sub ServeListFeedsets {
 	print $post->td({-align=>"center"},@$row[9]);  # SAT
 	print $post->td({-align=>"left"},@$row[10]); # START_TIME
 	print $post->td({-align=>"left"},@$row[11]); # END_TIME
-	print $post->td({-align=>"left"},@$row[12]); # MOUNT_POINT
+	print $post->td({-align=>"center"},@$row[12]);  # IS_DEFAULT
+	print $post->td({-align=>"left"},@$row[13]); # MOUNT_POINT
 
 	print "<form action=\"admin.pl\" method=\"post\">\n";
 	print "<td>\n";
@@ -7601,7 +7603,7 @@ sub ServeListFeedsets {
     print "</td>\n";
     print "</form>\n";
 
-    print $post->td({-colspan=>12},"&nbsp;");
+    print $post->td({-colspan=>13},"&nbsp;");
 	
     print "<form action=\"admin.pl\" method=\"post\">\n";
     print "<td align=\"left\">\n";
@@ -7650,8 +7652,8 @@ sub ServeEditFeed {
     print "<body>\n";
     print "<table cellspacing=\"0\" cellpadding=\"5\" border=\"0\">\n";
     my $sql="select SET_NAME,SUN,MON,TUE,WED,THU,FRI,SAT,".
-	"START_TIME,END_TIME,NAME,MOUNT_POINT,TYPE,LOGO_LINK from FEEDSETS ".
-	sprintf("where ID=%d",$feedset_id);
+	"START_TIME,END_TIME,NAME,MOUNT_POINT,TYPE,LOGO_LINK,IS_DEFAULT ".
+	"from FEEDSETS ".sprintf("where ID=%d",$feedset_id);
 
     my $q=$dbh->prepare($sql);
     $q->execute();
@@ -7729,6 +7731,25 @@ sub ServeEditFeed {
 	print $post->td({-align=>"right"},"<strong><a href=\"admin-doc.html#end_time\" target=\"docs\">End Time:</a></strong>");
 	print "<td colspan=\"2\" align=\"left\">";
 	&ServeTimeControl("END_TIME",@$row[9]);
+	print "</td>\n";
+	print "</tr>\n";
+
+	#
+	# Default Stream
+	#
+	print "<tr bgcolor=\"".BGCOLOR1."\">\n";
+	print $post->td({-align=>"right"},"<strong><a href=\"admin-doc.html#default_live_stream\" target=\"docs\">Default Stream:</a></strong>");
+	print "<td colspan=\"3\" align=\"left\">\n";
+	print "<select id=\"IS_DEFAULT\" name=\"IS_DEFAULT\">\n";
+        if(&GetLocalValue($post,"IS_DEFAULT",@$row[14]) eq "Y") {
+	    print $post->option({-value=>"Y",-selected},"Yes");
+	    print $post->option({-value=>"N"},"No");
+	}
+	else {
+	    print $post->option({-value=>"Y"},"Yes");
+	    print $post->option({-value=>"N",-selected},"No");
+	}
+	print "</select>\n";	
 	print "</td>\n";
 	print "</tr>\n";
 
@@ -7855,6 +7876,7 @@ sub ServeCommitFeed {
 	"TYPE=\"icecast2\",".
 	"START_TIME=\"".&ReadTimeControl("START_TIME")."\",".
 	"END_TIME=\"".&ReadTimeControl("END_TIME")."\",".
+	"IS_DEFAULT=\"".&EscapeString($post->param("IS_DEFAULT"))."\",".
 	"SUN=\"".&ReadCheckControl("SUN")."\",".
 	"MON=\"".&ReadCheckControl("MON")."\",".
 	"TUE=\"".&ReadCheckControl("TUE")."\",".

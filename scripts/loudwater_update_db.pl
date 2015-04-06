@@ -1102,7 +1102,14 @@ if($db_ver<53) {
     $q->finish();
 }
 
-$sql="update VERSION set DB=53";
+if($db_ver<54) {
+    $sql="alter table FEEDSETS add column IS_DEFAULT enum('N','Y') default 'N' after LOGO_LINK";
+    $q=$dbh->prepare($sql);
+    $q->execute();
+    $q->finish();
+}
+
+$sql="update VERSION set DB=54";
 $q=$dbh->prepare($sql);
 $q->execute();
 $q->finish();

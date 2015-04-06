@@ -975,3 +975,10 @@
 	* Fixed a bug in 'htdocs/admin.pl' that caused the 'Sunday'
 	checkbox in the 'Edit Live Feed' screen to fail to be initialized
 	correctly.
+2015-04-06 Fred Gleason <fredg@paravelsystems.com>
+	* Added a 'FEEDSETS.IS_DEFAULT' field to the database.
+	* Incremented the database version to 54.
+	* Added a 'Default' column to the 'Loudwater Live Web Feeds'
+	screen in 'htdocs/admin.pl'.
+	* Added a 'Default Stream' control to the 'Edit Live Feed' screen
+	in 'htdocs/admin.pl'.
