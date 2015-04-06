@@ -7805,7 +7805,7 @@ sub ServeEditFeed {
 	#
 	print "<tr bgcolor=\"".BGCOLOR1."\">\n";
 	print "<td align=\"right\">";
-	&ServeCheckControl("SUN",@$row[8]);
+	&ServeCheckControl("SUN",@$row[1]);
 	print "</td>\n";
 	print $post->td({-colspan=>2,-align=>"left"},"Sunday");
 	print "</tr>\n";

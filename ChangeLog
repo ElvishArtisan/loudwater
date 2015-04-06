@@ -971,3 +971,7 @@
 	'htdocs/live.pl'.
 2015-01-26 Fred Gleason <fredg@paravelsystems.com>
 	* Incremented the package version to 0.12.0.
+2015-04-06 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'htdocs/admin.pl' that caused the 'Sunday'
+	checkbox in the 'Edit Live Feed' screen to fail to be initialized
+	correctly.
